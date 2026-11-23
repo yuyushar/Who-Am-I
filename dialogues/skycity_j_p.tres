@@ -1,0 +1,1049 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 16
+syntax_version = 2
+raw_text = "~ prologue_skycity
+if zona_ke == 1
+	Guide: WAWAWA! LIHAT KE BAWAH! ITU PULAU-PULAU MELAYANG DI ATAS AWAN!!
+	Guide: E-eh! Hati-hati jangan terlalu ke pinggir tebing, nanti jatuh! Kamu kan tidak punya sayap sepertiku!
+	Player: Indah sekali... Tempat apa ini? Bagaimana bisa tanah dan bebatuan ini melayang di langit?
+	Gatekeeper: Selamat datang di awal pencarian jati dirimu. Ini adalah Kepulauan Langit, perpaduan antara sihir kuno dan teknologi kapal udara.
+	Gatekeeper: Di ketinggian ini, kehidupan bergerak dinamis dan penuh tantangan bagi para awak serta penduduknya.
+	Player: Apa yang harus kulakukan di tempat setinggi ini?
+	Guide: Tugas pertamamu! Perhatikan sekelilingmu, ada penduduk pulau yang sedang kebingungan mengurus urusan mereka.
+	Guide: Dekati mereka, ajak bicara, dan bantu mereka menentukan pilihan terbaik!
+	Gatekeeper: Tindakanmu di sini akan merefleksikan caramu menata hidup dan merespons ketidakpastian.
+	Gatekeeper: Selesaikanlah urusanmu dengan mereka. Aku akan menunggumu di dermaga kapal terbang saat kau siap melangkah lebih jauh.
+	Guide: Asyik! Ayo {{player_name}}, kita jelajahi pulau terapung yang menakjubkan ini!
+else
+	Guide: WAWAWA! Pemandangannya luar biasa! Kita sampai di kepulauan yang melayang di langit!
+	Guide: Hati-hati ya, jangan melangkah sembarangan ke tepi tebing!
+	Player: Dunia ini benar-benar menakjubkan... perpaduan sihir dan kapal terbang.
+	Gatekeeper: Di ketinggian ini, penduduk dan kapten kapal sedang menghadapi urusan mendesak yang butuh bantuanmu.
+	Guide: Nah, seperti petualangan kita di dunia-dunia sebelumnya, ayo kita keliling dan bantu mereka yang membutuhkan!
+	Gatekeeper: Aku akan menunggumu di dermaga setelah kau selesai membantu orang-orang di kepulauan ini.
+	Guide: Siap! Ayo {{player_name}}, kita temui orang-orang di dermaga langit ini!
+=> END
+
+~ npc_captain
+if captain_selesai
+	Captain C: Yarrr! Terima kasih atas bantuanmu menyiapkan kapal tempo hari, {{player_name}}!
+	=> END
+
+Captain C: Yerrr, barangku, perlengkapanku, masih banyak…
+Captain C: Bisakah kapten ini menuju tujuan tepat waktu jika seperti ini, arrrh
+Player: Adakah yang mungkin bisa saya bantu?
+Captain C: Yarrr! Kau bisa! Dengan ini waktuku akan sangat cukup
+Captain C: Namun kita mulai dari mana dulu? Apakah kau ada ide?
+- Bagaimana dengan mengelompokan berdasarkan kebutuhan dan membuat menjadi daftar perlengkapan?
+	do tambah_poin(\"J\")
+	do cutscene_opsi_captain(\"J\")
+	Captain C: Yarrr! Pemikiran bagus kawanku, dengan ini tidak akan ada yang tertinggal!
+- Bagaimana kalau kita mulai dari yang penting-penting dulu, nanti yang lain menyesuaikan
+	do tambah_poin(\"P\")
+	do cutscene_opsi_captain(\"P\")
+	Captain C: Yarrr! Benar sekali kawanku, Mulai dari yang penting dulu, lalu berlanjut ke lainya
+Guide: Dengan itu, {{player_name}} membantu Captain C menyiapkan kapalnya
+Guide: Eh bentar… Dia berlayar sendiri?
+Captain C: Yerrr, aku adalah pelaut solo!
+do selesaikan_npc(\"captain\")
+=> END
+
+~ npc_myra
+if myra_selesai
+	Myra: Terima kasih atas bantuan navigasimu, {{player_name}}. Rute perjalanan kita sekarang sudah aman!
+	=> END
+
+Myra: hm… ini tidak terduga…
+Player: Maaf mengganggu, kelihatannya kamu memiliki masalah
+Myra: ah? Iya, aku sedang memeriksa arah angin, namun sesuatu tidak terduga terjadi
+Myra: arah angin berubah, sehingga rute harus diperhitungkan lagi
+Player: jadi harus mengubah rute lagi?
+Myra: itu bisa juga, namun kita juga bisa menyesuaikan rute lama sesuai arah angin baru
+Myra: Bagaimana menurutmu?
+- Bagaimana jika periksa kembali pola anginnya dan menentukan rute alternatif sebelum berangkat agar lebih jelas rutenya?
+	do tambah_poin(\"J\")
+	do cutscene_opsi_myra(\"J\")
+	Myra: Hmm… Baiklah aku akan mencarikan rute alternatifnya, terimakasih sudah membantuku
+- Bagaimana jika tetap menggunakan arah yang aman untuk saat ini, lalu menyesuaikan perjalanan berdasarkan perubahan angin berikutnya?
+	do tambah_poin(\"P\")
+	do cutscene_opsi_myra(\"P\")
+	Myra: Hmm… Dengan pendapatmu kita bisa menyesuaikan perubahan angin yang tidak terduga, terimakasih sudah membantuku
+Guide: Merekapun menyelesaikan masalah angin tersebut, Semoga saja anginnya tidak berubah terlalu sering. Aku tidak mau kita berputar-putar di langit!
+do selesaikan_npc(\"myra\")
+=> END
+
+~ npc_ronnie
+if ronnie_selesai
+	Ronnie: Kapasitas kapal dan penumpang sudah beres! Terima kasih atas solusimu, {{player_name}}!
+	=> END
+
+Ronnie: Apa yang harus aku lakukan ini…
+Ronnie: Oh kau yang disana, bisakah aku meminta bantuan
+Player: Ah! Iya apa yang bisa aku bantu?
+Ronnie: Jadi gini, Baru saja ada seorang pengembara yang ingin ikut dalam perjalanan. Padahal kapasitas kapal hampir penuh dan semua persediaan sudah disiapkan.
+Player: Hmm jadi mendadak begitu ya?
+Ronnie: Iya! Sekarang aku jadi bingung. Sebaiknya kita mempertahankan rencana yang sudah ada atau mencoba mencari cara lain?
+- Mari cek kapasitas kapal dulu, jika tidak memungkinkan kita bisa melakukan rencana awal dan mencarikan jadwal keberangkatan berikutnya untuknya
+	do tambah_poin(\"J\")
+	do cutscene_opsi_ronnie(\"J\")
+	Ronnie: Masuk akal! Kita memang harus memastikan kapasitas kapal tidak terlampaui. Aku akan memeriksa daftar persediaan dan mencarikan jadwal perjalanan selanjutnya jika diperlukan.
+- Bagaimana kalau kita berbicara dengannya terlebih dahulu? Mungkin ada cara untuk menyesuaikan rencana agar dia tetap bisa ikut
+	do tambah_poin(\"P\")
+	do cutscene_opsi_ronnie(\"P\")
+	Ronnie: Oh! Ide yang menarik. Kita bisa melihat kembali susunan barang dan mendiskusikan kemungkinan perubahan rute. Siapa tahu masih ada ruang untuknya.
+Guide: Merekapun membantu penumpang yang terlambat itu
+Guide: Sedikit menyebalkan sih kalo keterlambatan seseorang bisa menganggu semua
+do selesaikan_npc(\"ronnie\")
+=> END
+
+~ panggil_mc_skycity
+Gatekeeper: Hai {{player_name}}, kemarilah!
+Guide: Eh, Gatekeeper sudah menunggu di dermaga. Ayo kita temui dia!
+=> END
+
+~ epilogue_skycity
+if quest_selesai < 3
+	Gatekeeper: Masih ada orang di kepulauan ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!
+	=> END
+
+Gatekeeper: Kau sudah sangat membantu di dunia ini
+Guide: Jujur saja aku agak pusing, mungkin aku mabuk laut
+Player: Tapi kita di langit? Lagi pula kau sering terbang!
+Guide: Ah?! Iya… uhh… Aku kurang biasa naik kapal terbang
+Player: ~Sigh~ Terserahlah
+Gatekeeper: Tidak apa apa, mari kita lanjutkan ke dunia selanjutnya
+do pindah_zona_acak()
+=> END"
+errors = [  ]
+titles = {
+"epilogue_skycity": "90",
+"npc_captain": "13",
+"npc_myra": "37",
+"npc_ronnie": "61",
+"panggil_mc_skycity": "85",
+"prologue_skycity": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "prologue_skycity",
+"type": "title"
+},
+"1": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "2",
+"replacements": [  ],
+"text": "WAWAWA!!!, ITU PULAU TERBANG!!!",
+"translation_key": "WAWAWA!!!, ITU PULAU TERBANG!!!",
+"type": "dialogue"
+},
+"10": {
+"next_id": "end",
+"type": "goto"
+},
+"100": {
+"mutation": {
+"expression": [ {
+"function": "pindah_zona_acak",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "101",
+"type": "mutation"
+},
+"101": {
+"next_id": "end",
+"type": "goto"
+},
+"12": {
+"next_id": "13",
+"text": "npc_captain",
+"type": "title"
+},
+"13": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "captain_selesai"
+} ]
+},
+"next_conditional_id": "17",
+"next_id": "14",
+"next_id_after": "17",
+"type": "condition"
+},
+"14": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "15",
+"parent_id": "13",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Yarrr! Terima kasih atas bantuanmu menyiapkan kapal tempo hari, {{player_name}}!",
+"translation_key": "Yarrr! Terima kasih atas bantuanmu menyiapkan kapal tempo hari, {{player_name}}!",
+"type": "dialogue"
+},
+"15": {
+"next_id": "end",
+"parent_id": "13",
+"type": "goto"
+},
+"17": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "18",
+"replacements": [  ],
+"text": "Yerrr, barangku, perlengkapanku, masih banyak…",
+"translation_key": "Yerrr, barangku, perlengkapanku, masih banyak…",
+"type": "dialogue"
+},
+"18": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "19",
+"replacements": [  ],
+"text": "Bisakah kapten ini menuju tujuan tepat waktu jika seperti ini, arrrh",
+"translation_key": "Bisakah kapten ini menuju tujuan tepat waktu jika seperti ini, arrrh",
+"type": "dialogue"
+},
+"19": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "20",
+"replacements": [  ],
+"text": "Adakah yang mungkin bisa saya bantu?",
+"translation_key": "Adakah yang mungkin bisa saya bantu?",
+"type": "dialogue"
+},
+"2": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "ah!? Hati-hati, kau nanti jatuh, kau tidak bisa terbang sepertiku",
+"translation_key": "ah!? Hati-hati, kau nanti jatuh, kau tidak bisa terbang sepertiku",
+"type": "dialogue"
+},
+"20": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "21",
+"replacements": [  ],
+"text": "Yarrr! Kau bisa! Dengan ini waktuku akan sangat cukup",
+"translation_key": "Yarrr! Kau bisa! Dengan ini waktuku akan sangat cukup",
+"type": "dialogue"
+},
+"21": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "22",
+"replacements": [  ],
+"text": "Namun kita mulai dari mana dulu? Apakah kau ada ide?",
+"translation_key": "Namun kita mulai dari mana dulu? Apakah kau ada ide?",
+"type": "dialogue"
+},
+"22": {
+"next_id": "23",
+"next_id_after": "30",
+"replacements": [  ],
+"responses": PoolStringArray( "22", "26" ),
+"text": "Bagaimana dengan mengelompokan berdasarkan kebutuhan dan membuat menjadi daftar perlengkapan?",
+"translation_key": "Bagaimana dengan mengelompokan berdasarkan kebutuhan dan membuat menjadi daftar perlengkapan?",
+"type": "response"
+},
+"23": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "J"
+} ] ]
+} ]
+},
+"next_id": "24",
+"parent_id": "22",
+"type": "mutation"
+},
+"24": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_captain",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "J"
+} ] ]
+} ]
+},
+"next_id": "25",
+"parent_id": "22",
+"type": "mutation"
+},
+"25": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "30",
+"parent_id": "22",
+"replacements": [  ],
+"text": "Yarrr! Pemikiran bagus kawanku, dengan ini tidak akan ada yang tertinggal!",
+"translation_key": "Yarrr! Pemikiran bagus kawanku, dengan ini tidak akan ada yang tertinggal!",
+"type": "dialogue"
+},
+"26": {
+"next_id": "27",
+"next_id_after": "30",
+"replacements": [  ],
+"text": "Bagaimana kalau kita mulai dari yang penting-penting dulu, nanti yang lain menyesuaikan",
+"translation_key": "Bagaimana kalau kita mulai dari yang penting-penting dulu, nanti yang lain menyesuaikan",
+"type": "response"
+},
+"27": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "P"
+} ] ]
+} ]
+},
+"next_id": "28",
+"parent_id": "26",
+"type": "mutation"
+},
+"28": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_captain",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "P"
+} ] ]
+} ]
+},
+"next_id": "29",
+"parent_id": "26",
+"type": "mutation"
+},
+"29": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "30",
+"parent_id": "26",
+"replacements": [  ],
+"text": "Yarrr! Benar sekali kawanku, Mulai dari yang penting dulu, lalu berlanjut ke lainya",
+"translation_key": "Yarrr! Benar sekali kawanku, Mulai dari yang penting dulu, lalu berlanjut ke lainya",
+"type": "dialogue"
+},
+"3": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "4",
+"replacements": [  ],
+"text": "Tempat apa ini, kok semuanya melayang gini",
+"translation_key": "Tempat apa ini, kok semuanya melayang gini",
+"type": "dialogue"
+},
+"30": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "31",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Dengan itu, {{player_name}} membantu Captain C menyiapkan kapalnya",
+"translation_key": "Dengan itu, {{player_name}} membantu Captain C menyiapkan kapalnya",
+"type": "dialogue"
+},
+"31": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "32",
+"replacements": [  ],
+"text": "Eh bentar… Dia berlayar sendiri?",
+"translation_key": "Eh bentar… Dia berlayar sendiri?",
+"type": "dialogue"
+},
+"32": {
+"character": "Captain C",
+"character_replacements": [  ],
+"next_id": "33",
+"replacements": [  ],
+"text": "Yerrr, aku adalah pelaut solo!",
+"translation_key": "Yerrr, aku adalah pelaut solo!",
+"type": "dialogue"
+},
+"33": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "captain"
+} ] ]
+} ]
+},
+"next_id": "34",
+"type": "mutation"
+},
+"34": {
+"next_id": "end",
+"type": "goto"
+},
+"36": {
+"next_id": "37",
+"text": "npc_myra",
+"type": "title"
+},
+"37": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "myra_selesai"
+} ]
+},
+"next_conditional_id": "41",
+"next_id": "38",
+"next_id_after": "41",
+"type": "condition"
+},
+"38": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "39",
+"parent_id": "37",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Terima kasih atas bantuan navigasimu, {{player_name}}. Rute perjalanan kita sekarang sudah aman!",
+"translation_key": "Terima kasih atas bantuan navigasimu, {{player_name}}. Rute perjalanan kita sekarang sudah aman!",
+"type": "dialogue"
+},
+"39": {
+"next_id": "end",
+"parent_id": "37",
+"type": "goto"
+},
+"4": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Ini adalah dunia dimana sihir dan teknologi menjadi satu",
+"translation_key": "Ini adalah dunia dimana sihir dan teknologi menjadi satu",
+"type": "dialogue"
+},
+"41": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "42",
+"replacements": [  ],
+"text": "hm… ini tidak terduga…",
+"translation_key": "hm… ini tidak terduga…",
+"type": "dialogue"
+},
+"42": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "43",
+"replacements": [  ],
+"text": "Maaf mengganggu, kelihatannya kamu memiliki masalah",
+"translation_key": "Maaf mengganggu, kelihatannya kamu memiliki masalah",
+"type": "dialogue"
+},
+"43": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "44",
+"replacements": [  ],
+"text": "ah? Iya, aku sedang memeriksa arah angin, namun sesuatu tidak terduga terjadi",
+"translation_key": "ah? Iya, aku sedang memeriksa arah angin, namun sesuatu tidak terduga terjadi",
+"type": "dialogue"
+},
+"44": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "45",
+"replacements": [  ],
+"text": "arah angin berubah, sehingga rute harus diperhitungkan lagi",
+"translation_key": "arah angin berubah, sehingga rute harus diperhitungkan lagi",
+"type": "dialogue"
+},
+"45": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "46",
+"replacements": [  ],
+"text": "jadi harus mengubah rute lagi?",
+"translation_key": "jadi harus mengubah rute lagi?",
+"type": "dialogue"
+},
+"46": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "47",
+"replacements": [  ],
+"text": "itu bisa juga, namun kita juga bisa menyesuaikan rute lama sesuai arah angin baru",
+"translation_key": "itu bisa juga, namun kita juga bisa menyesuaikan rute lama sesuai arah angin baru",
+"type": "dialogue"
+},
+"47": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "48",
+"replacements": [  ],
+"text": "Bagaimana menurutmu?",
+"translation_key": "Bagaimana menurutmu?",
+"type": "dialogue"
+},
+"48": {
+"next_id": "49",
+"next_id_after": "56",
+"replacements": [  ],
+"responses": PoolStringArray( "48", "52" ),
+"text": "Bagaimana jika periksa kembali pola anginnya dan menentukan rute alternatif sebelum berangkat agar lebih jelas rutenya?",
+"translation_key": "Bagaimana jika periksa kembali pola anginnya dan menentukan rute alternatif sebelum berangkat agar lebih jelas rutenya?",
+"type": "response"
+},
+"49": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "J"
+} ] ]
+} ]
+},
+"next_id": "50",
+"parent_id": "48",
+"type": "mutation"
+},
+"5": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "6",
+"replacements": [  ],
+"text": "Walaupun begitu, masalah tetap akan ada disetiap tempat",
+"translation_key": "Walaupun begitu, masalah tetap akan ada disetiap tempat",
+"type": "dialogue"
+},
+"50": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_myra",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "J"
+} ] ]
+} ]
+},
+"next_id": "51",
+"parent_id": "48",
+"type": "mutation"
+},
+"51": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "56",
+"parent_id": "48",
+"replacements": [  ],
+"text": "Hmm… Baiklah aku akan mencarikan rute alternatifnya, terimakasih sudah membantuku",
+"translation_key": "Hmm… Baiklah aku akan mencarikan rute alternatifnya, terimakasih sudah membantuku",
+"type": "dialogue"
+},
+"52": {
+"next_id": "53",
+"next_id_after": "56",
+"replacements": [  ],
+"text": "Bagaimana jika tetap menggunakan arah yang aman untuk saat ini, lalu menyesuaikan perjalanan berdasarkan perubahan angin berikutnya?",
+"translation_key": "Bagaimana jika tetap menggunakan arah yang aman untuk saat ini, lalu menyesuaikan perjalanan berdasarkan perubahan angin berikutnya?",
+"type": "response"
+},
+"53": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "P"
+} ] ]
+} ]
+},
+"next_id": "54",
+"parent_id": "52",
+"type": "mutation"
+},
+"54": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_myra",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "P"
+} ] ]
+} ]
+},
+"next_id": "55",
+"parent_id": "52",
+"type": "mutation"
+},
+"55": {
+"character": "Myra",
+"character_replacements": [  ],
+"next_id": "56",
+"parent_id": "52",
+"replacements": [  ],
+"text": "Hmm… Dengan pendapatmu kita bisa menyesuaikan perubahan angin yang tidak terduga, terimakasih sudah membantuku",
+"translation_key": "Hmm… Dengan pendapatmu kita bisa menyesuaikan perubahan angin yang tidak terduga, terimakasih sudah membantuku",
+"type": "dialogue"
+},
+"56": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "57",
+"replacements": [  ],
+"text": "Merekapun menyelesaikan masalah angin tersebut, Semoga saja anginnya tidak berubah terlalu sering. Aku tidak mau kita berputar-putar di langit!",
+"translation_key": "Merekapun menyelesaikan masalah angin tersebut, Semoga saja anginnya tidak berubah terlalu sering. Aku tidak mau kita berputar-putar di langit!",
+"type": "dialogue"
+},
+"57": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "myra"
+} ] ]
+} ]
+},
+"next_id": "58",
+"type": "mutation"
+},
+"58": {
+"next_id": "end",
+"type": "goto"
+},
+"6": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "7",
+"replacements": [  ],
+"text": "Dan itulah tugasmu! Cepat sana bantu mereka",
+"translation_key": "Dan itulah tugasmu! Cepat sana bantu mereka",
+"type": "dialogue"
+},
+"60": {
+"next_id": "61",
+"text": "npc_ronnie",
+"type": "title"
+},
+"61": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "ronnie_selesai"
+} ]
+},
+"next_conditional_id": "65",
+"next_id": "62",
+"next_id_after": "65",
+"type": "condition"
+},
+"62": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "63",
+"parent_id": "61",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Kapasitas kapal dan penumpang sudah beres! Terima kasih atas solusimu, {{player_name}}!",
+"translation_key": "Kapasitas kapal dan penumpang sudah beres! Terima kasih atas solusimu, {{player_name}}!",
+"type": "dialogue"
+},
+"63": {
+"next_id": "end",
+"parent_id": "61",
+"type": "goto"
+},
+"65": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "66",
+"replacements": [  ],
+"text": "Apa yang harus aku lakukan ini…",
+"translation_key": "Apa yang harus aku lakukan ini…",
+"type": "dialogue"
+},
+"66": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "67",
+"replacements": [  ],
+"text": "Oh kau yang disana, bisakah aku meminta bantuan",
+"translation_key": "Oh kau yang disana, bisakah aku meminta bantuan",
+"type": "dialogue"
+},
+"67": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "68",
+"replacements": [  ],
+"text": "Ah! Iya apa yang bisa aku bantu?",
+"translation_key": "Ah! Iya apa yang bisa aku bantu?",
+"type": "dialogue"
+},
+"68": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "69",
+"replacements": [  ],
+"text": "Jadi gini, Baru saja ada seorang pengembara yang ingin ikut dalam perjalanan. Padahal kapasitas kapal hampir penuh dan semua persediaan sudah disiapkan.",
+"translation_key": "Jadi gini, Baru saja ada seorang pengembara yang ingin ikut dalam perjalanan. Padahal kapasitas kapal hampir penuh dan semua persediaan sudah disiapkan.",
+"type": "dialogue"
+},
+"69": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "70",
+"replacements": [  ],
+"text": "Hmm jadi mendadak begitu ya?",
+"translation_key": "Hmm jadi mendadak begitu ya?",
+"type": "dialogue"
+},
+"7": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "8",
+"replacements": [  ],
+"text": "Baiklah, akan ku lakukan",
+"translation_key": "Baiklah, akan ku lakukan",
+"type": "dialogue"
+},
+"70": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "71",
+"replacements": [  ],
+"text": "Iya! Sekarang aku jadi bingung. Sebaiknya kita mempertahankan rencana yang sudah ada atau mencoba mencari cara lain?",
+"translation_key": "Iya! Sekarang aku jadi bingung. Sebaiknya kita mempertahankan rencana yang sudah ada atau mencoba mencari cara lain?",
+"type": "dialogue"
+},
+"71": {
+"next_id": "72",
+"next_id_after": "79",
+"replacements": [  ],
+"responses": PoolStringArray( "71", "75" ),
+"text": "Mari cek kapasitas kapal dulu, jika tidak memungkinkan kita bisa melakukan rencana awal dan mencarikan jadwal keberangkatan berikutnya untuknya",
+"translation_key": "Mari cek kapasitas kapal dulu, jika tidak memungkinkan kita bisa melakukan rencana awal dan mencarikan jadwal keberangkatan berikutnya untuknya",
+"type": "response"
+},
+"72": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "J"
+} ] ]
+} ]
+},
+"next_id": "73",
+"parent_id": "71",
+"type": "mutation"
+},
+"73": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_ronnie",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "J"
+} ] ]
+} ]
+},
+"next_id": "74",
+"parent_id": "71",
+"type": "mutation"
+},
+"74": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "79",
+"parent_id": "71",
+"replacements": [  ],
+"text": "Masuk akal! Kita memang harus memastikan kapasitas kapal tidak terlampaui. Aku akan memeriksa daftar persediaan dan mencarikan jadwal perjalanan selanjutnya jika diperlukan.",
+"translation_key": "Masuk akal! Kita memang harus memastikan kapasitas kapal tidak terlampaui. Aku akan memeriksa daftar persediaan dan mencarikan jadwal perjalanan selanjutnya jika diperlukan.",
+"type": "dialogue"
+},
+"75": {
+"next_id": "76",
+"next_id_after": "79",
+"replacements": [  ],
+"text": "Bagaimana kalau kita berbicara dengannya terlebih dahulu? Mungkin ada cara untuk menyesuaikan rencana agar dia tetap bisa ikut",
+"translation_key": "Bagaimana kalau kita berbicara dengannya terlebih dahulu? Mungkin ada cara untuk menyesuaikan rencana agar dia tetap bisa ikut",
+"type": "response"
+},
+"76": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "P"
+} ] ]
+} ]
+},
+"next_id": "77",
+"parent_id": "75",
+"type": "mutation"
+},
+"77": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_ronnie",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "P"
+} ] ]
+} ]
+},
+"next_id": "78",
+"parent_id": "75",
+"type": "mutation"
+},
+"78": {
+"character": "Ronnie",
+"character_replacements": [  ],
+"next_id": "79",
+"parent_id": "75",
+"replacements": [  ],
+"text": "Oh! Ide yang menarik. Kita bisa melihat kembali susunan barang dan mendiskusikan kemungkinan perubahan rute. Siapa tahu masih ada ruang untuknya.",
+"translation_key": "Oh! Ide yang menarik. Kita bisa melihat kembali susunan barang dan mendiskusikan kemungkinan perubahan rute. Siapa tahu masih ada ruang untuknya.",
+"type": "dialogue"
+},
+"79": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "80",
+"replacements": [  ],
+"text": "Merekapun membantu penumpang yang terlambat itu",
+"translation_key": "Merekapun membantu penumpang yang terlambat itu",
+"type": "dialogue"
+},
+"8": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "9",
+"replacements": [  ],
+"text": "Aku akan menunggumu di dermaga setelah kau selesai.",
+"translation_key": "Aku akan menunggumu di dermaga setelah kau selesai.",
+"type": "dialogue"
+},
+"80": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "81",
+"replacements": [  ],
+"text": "Sedikit menyebalkan sih kalo keterlambatan seseorang bisa menganggu semua",
+"translation_key": "Sedikit menyebalkan sih kalo keterlambatan seseorang bisa menganggu semua",
+"type": "dialogue"
+},
+"81": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "ronnie"
+} ] ]
+} ]
+},
+"next_id": "82",
+"type": "mutation"
+},
+"82": {
+"next_id": "end",
+"type": "goto"
+},
+"84": {
+"next_id": "85",
+"text": "panggil_mc_skycity",
+"type": "title"
+},
+"85": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "86",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Hai {{player_name}}, kemarilah!",
+"translation_key": "Hai {{player_name}}, kemarilah!",
+"type": "dialogue"
+},
+"86": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "87",
+"replacements": [  ],
+"text": "Eh, Gatekeeper sudah menunggu di dermaga. Ayo kita temui dia!",
+"translation_key": "Eh, Gatekeeper sudah menunggu di dermaga. Ayo kita temui dia!",
+"type": "dialogue"
+},
+"87": {
+"next_id": "end",
+"type": "goto"
+},
+"89": {
+"next_id": "90",
+"text": "epilogue_skycity",
+"type": "title"
+},
+"9": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "10",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Ayo {{player_name}}, kita jelajahi kepulauan melayang ini!",
+"translation_key": "Ayo {{player_name}}, kita jelajahi kepulauan melayang ini!",
+"type": "dialogue"
+},
+"90": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "quest_selesai"
+}, {
+"type": "comparison",
+"value": "<"
+}, {
+"type": "number",
+"value": 3
+} ]
+},
+"next_conditional_id": "94",
+"next_id": "91",
+"next_id_after": "94",
+"type": "condition"
+},
+"91": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "92",
+"parent_id": "90",
+"replacements": [  ],
+"text": "Masih ada orang di kepulauan ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"translation_key": "Masih ada orang di kepulauan ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"type": "dialogue"
+},
+"92": {
+"next_id": "end",
+"parent_id": "90",
+"type": "goto"
+},
+"94": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "95",
+"replacements": [  ],
+"text": "Kau sudah sangat membantu di dunia ini",
+"translation_key": "Kau sudah sangat membantu di dunia ini",
+"type": "dialogue"
+},
+"95": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "96",
+"replacements": [  ],
+"text": "Jujur saja aku agak pusing, mungkin aku mabuk laut",
+"translation_key": "Jujur saja aku agak pusing, mungkin aku mabuk laut",
+"type": "dialogue"
+},
+"96": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "97",
+"replacements": [  ],
+"text": "Tapi kita di langit? Lagi pula kau sering terbang!",
+"translation_key": "Tapi kita di langit? Lagi pula kau sering terbang!",
+"type": "dialogue"
+},
+"97": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "98",
+"replacements": [  ],
+"text": "Ah?! Iya… uhh… Aku kurang biasa naik kapal terbang",
+"translation_key": "Ah?! Iya… uhh… Aku kurang biasa naik kapal terbang",
+"type": "dialogue"
+},
+"98": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "99",
+"replacements": [  ],
+"text": "~Sigh~ Terserahlah",
+"translation_key": "~Sigh~ Terserahlah",
+"type": "dialogue"
+},
+"99": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "100",
+"replacements": [  ],
+"text": "Tidak apa apa, mari kita lanjutkan ke dunia selanjutnya",
+"translation_key": "Tidak apa apa, mari kita lanjutkan ke dunia selanjutnya",
+"type": "dialogue"
+}
+}

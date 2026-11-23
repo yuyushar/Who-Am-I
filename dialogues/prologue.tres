@@ -1,0 +1,201 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 12
+syntax_version = 2
+raw_text = "~ start
+
+Guide: Hey! Bangun!
+Player: ugh... dimana aku?
+Guide: Void... atau semacamnya, kau dipilih untuk meneliti berbagai dunia yang dibuat oleh [shake rate=20 level=10][redacted][/shake], detailnya tidak penting. Bangunlah kita harus bertemu dia.
+Player: Siapa?
+Guide: Gatekeeper dia akan membawamu ke tiap dunia nanti
+Player: Lalu siapa kamu?
+Guide: Pertanyaan yang benar adalah siapa dirimu sendiri?
+do munculkan_input_nama()
+=> END
+
+
+~ ask_name
+
+Guide: Okay, panggil aku Guide ajah
+Gatekeeper: Sudah terbangun ternyata, aku gatekeeper
+Player: Aku {{player_name}}
+Gatekeeper: Nama yang bagus, baik sudah siap semua?
+Guide: Siap!!!
+Gatekeeper: Baiklah, tutup matamu dan percayakan dirimu padaku
+do pindah_ke_zona()
+=> END"
+errors = [  ]
+titles = {
+"ask_name": "15",
+"start": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "start",
+"type": "title"
+},
+"10": {
+"next_id": "end",
+"type": "goto"
+},
+"13": {
+"next_id": "15",
+"text": "ask_name",
+"type": "title"
+},
+"15": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "16",
+"replacements": [  ],
+"text": "Okay, panggil aku Guide ajah",
+"translation_key": "Okay, panggil aku Guide ajah",
+"type": "dialogue"
+},
+"16": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "17",
+"replacements": [  ],
+"text": "Sudah terbangun ternyata, aku gatekeeper",
+"translation_key": "Sudah terbangun ternyata, aku gatekeeper",
+"type": "dialogue"
+},
+"17": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "18",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Aku {{player_name}}",
+"translation_key": "Aku {{player_name}}",
+"type": "dialogue"
+},
+"18": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "19",
+"replacements": [  ],
+"text": "Nama yang bagus, baik sudah siap semua?",
+"translation_key": "Nama yang bagus, baik sudah siap semua?",
+"type": "dialogue"
+},
+"19": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "20",
+"replacements": [  ],
+"text": "Siap!!!",
+"translation_key": "Siap!!!",
+"type": "dialogue"
+},
+"2": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "Hey! Bangun!",
+"translation_key": "Hey! Bangun!",
+"type": "dialogue"
+},
+"20": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "21",
+"replacements": [  ],
+"text": "Baiklah, tutup matamu dan percayakan dirimu padaku",
+"translation_key": "Baiklah, tutup matamu dan percayakan dirimu padaku",
+"type": "dialogue"
+},
+"21": {
+"mutation": {
+"expression": [ {
+"function": "pindah_ke_zona",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "22",
+"type": "mutation"
+},
+"22": {
+"next_id": "end",
+"type": "goto"
+},
+"3": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "4",
+"replacements": [  ],
+"text": "ugh... dimana aku?",
+"translation_key": "ugh... dimana aku?",
+"type": "dialogue"
+},
+"4": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Void... atau semacamnya, kau dipilih untuk meneliti berbagai dunia yang dibuat oleh [shake rate=20 level=10][redacted][/shake], detailnya tidak penting. Bangunlah kita harus bertemu dia.",
+"translation_key": "Void... atau semacamnya, kau dipilih untuk meneliti berbagai dunia yang dibuat oleh [shake rate=20 level=10][redacted][/shake], detailnya tidak penting. Bangunlah kita harus bertemu dia.",
+"type": "dialogue"
+},
+"5": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "6",
+"replacements": [  ],
+"text": "Siapa?",
+"translation_key": "Siapa?",
+"type": "dialogue"
+},
+"6": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "7",
+"replacements": [  ],
+"text": "Gatekeeper dia akan membawamu ke tiap dunia nanti",
+"translation_key": "Gatekeeper dia akan membawamu ke tiap dunia nanti",
+"type": "dialogue"
+},
+"7": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "8",
+"replacements": [  ],
+"text": "Lalu siapa kamu?",
+"translation_key": "Lalu siapa kamu?",
+"type": "dialogue"
+},
+"8": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "9",
+"replacements": [  ],
+"text": "Pertanyaan yang benar adalah siapa dirimu sendiri?",
+"translation_key": "Pertanyaan yang benar adalah siapa dirimu sendiri?",
+"type": "dialogue"
+},
+"9": {
+"mutation": {
+"expression": [ {
+"function": "munculkan_input_nama",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "10",
+"type": "mutation"
+}
+}

@@ -1,0 +1,833 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 11
+syntax_version = 2
+raw_text = "~ prologue_village
+if zona_ke == 1
+	Guide: Wah, lihat sekelilingmu, {{player_name}}! Udara segar, rumah-rumah kayu... kita sampai di sebuah desa pedesaan yang asri!
+	Player: Tempat yang tenang... tapi, apa yang sebenarnya harus kulakukan di sini?
+	Gatekeeper: Selamat datang di langkah pertamamu. Di desa ini, para warga sedang bersiap menyambut festival tahunan mereka.
+	Gatekeeper: Namun, beberapa di antara mereka tengah menghadapi kesulitan dan membutuhkan pertolongan.
+	Guide: Yap! Tugasmu adalah menjelajahi desa ini dan berbicara dengan orang-orang yang ada di sini.
+	Guide: Dengarkan cerita mereka, bantu mereka menyelesaikan masalahnya, dan berikan keputusan terbaikmu!
+	Player: Keputusan terbaikku...?
+	Gatekeeper: Benar. Setiap pilihan yang kau ambil akan perlahan merangkai kembali pecahan jati dirimu yang hilang.
+	Gatekeeper: Selesaikanlah bantuanmu pada mereka. Aku akan menunggumu di gerbang desa ini saat seluruh urusanmu tuntas.
+	Guide: Tuh kan, dia menghilang lagi... Kebiasaan deh! Ya sudah {{player_name}}, ayo kita temui warga desa!
+else
+	Guide: Segarnya! Kita akhirnya sampai di desa pedesaan yang tenang ini!
+	Player: Suasananya jauh berbeda dari dunia sebelumnya ya...
+	Gatekeeper: Desa ini sedang mempersiapkan festival tahunan mereka, namun masih ada beberapa kekacauan yang belum selesai.
+	Guide: Nah, seperti petualangan kita di dunia sebelumnya, yuk keliling dan bantu warga yang sedang kesusahan di sini!
+	Gatekeeper: Pilihanmu di desa ini akan semakin memperjelas siapa dirimu. Aku akan menunggumu di gerbang desa saat kau siap.
+	Guide: Siap! Ayo {{player_name}}, kita lihat persiapan festival mereka!
+=> END
+
+~ npc_raka
+if raka_selesai
+	Raka: Makasih sarannya ya, {{player_name}}! Benderanya sudah terpasang rapi.
+	=> END
+
+Raka: *sigh~ tugasku sangat banyak sekali hari ini, mana waktunya mepet lagi...
+Raka: Eh itu kamu, {{player_name}} bisa bantu aku sebentar ga?
+Player: Eh iya mas, ada apa ya?
+Raka: Gini tugasku untuk festival ini banyak sekali dan kurang cukup jika dilakukin sendiri, bisa bantu aku ga, bisa ambilin aku beberapa dekorasi buat nanti kalo ga bantu aku masang lentera dan bendera ini?
+Player: hmmmm...
+- Okelah aku bantu pasangin benderanya, terus mas Raka bisa pasang lenteranya.
+	do tambah_poin(\"E\")
+	Raka: Oh okay bisa lebih cepat kalo kerjain sama-sama.
+	do cutscene_opsi_kolaborasi()
+- Baik aku ambilkan dekorasi lainnya selama mas Raka memasang dekorasinya.
+	do tambah_poin(\"I\")
+	Raka: Okok, buat dekorasinya di gudang ya.
+Guide: Raka dan {{player_name}}-pun menyelesaikan dekorasinya.
+do selesaikan_npc(\"raka\")
+=> END
+
+~ npc_kaleva
+if kaleva_selesai
+	Kaleva: Pengumuman festival sudah siap. Terima kasih atas bantuanmu!
+	=> END
+
+Kaleva: Aduh, dah jam segini tapi undangan belom disampaikan, argh.
+Player: hmm bagaimana jika membuat pengumuman saja pak?
+Kaleva: Bisa juga, tetapi aku khawatir beberapa warga tidak membacanya.
+- Bagaimana kalo dipasang di papan desa, kan dekat alun-alun jadi banyak yang baca.
+	do tambah_poin(\"I\")
+	do pilih_opsi_papan_kaleva()
+	Kaleva: Benar juga, papan pengumuman sering dibaca orang-orang, bisa menghemat waktu.
+- Bagaimana kalau dibagi saja undangannya secara langsung, sekalian kita ajak.
+	do tambah_poin(\"E\")
+	Kaleva: Baiklah kau ambil setengah desa dan aku ambil setengahnya, semoga saja cukup.
+Guide: Mereka pun dapat menyelesaikan masalah tersebut tepat waktu.
+do selesaikan_npc(\"kaleva\")
+=> END
+
+~ npc_annie
+if annie_selesai
+	Annie: Istirahatlah yang cukup, {{player_name}}. Nikmati festivalnya!
+	=> END
+
+Annie: Hi..., terimakasih sudah membantu desa kami.
+Player: Ah tidak apa-apa, cuma bantuan kecil doang kok hehe...
+Annie: Beristirahatlah disini sebentar.
+- Baiklah, aku juga ingin menceritakan banyak hal padamu.
+	do tambah_poin(\"E\")
+	Annie: Pasti seru sekali kisahmu.
+- Terimakasih, aku juga butuh istirahat sebelum melanjutkan perjalanan.
+	do tambah_poin(\"I\")
+	Annie: Sama-sama, aku tau kau pasti lelah.
+Guide: Mereka pun beristirahat bersama, malah pacaran *humph~
+do selesaikan_npc(\"annie\")
+=> END
+~ panggil_mc
+Gatekeeper: Hai {{player_name}}, sini kamu!
+Guide: Eh, itu Gatekeeper manggil kamu. Ayo samperin!
+=> END
+~ epilogue_village
+if quest_selesai < 3
+	Gatekeeper: Masih ada warga desa yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!
+	=> END
+
+Gatekeeper: Semua sudah bahagia disini, itu berkat bantuan kecilmu.
+Player: Ah... aku cuma bantu-bantu aja, ga sebesar itu kok.
+Guide: Semua bantuan itu berharga loh.
+Gatekeeper: Benar sekali, karena itu masih ada dunia lainnya yang butuh bantuanmu.
+Player: Baiklah, mari kita lanjutkan.
+Guide: Kami pun pergi menuju dunia selanjutnya dengan arahan gatekeeper.
+do pindah_zona_acak()
+=> END"
+errors = [  ]
+titles = {
+"epilogue_village": "70",
+"npc_annie": "49",
+"npc_kaleva": "30",
+"npc_raka": "9",
+"panggil_mc": "66",
+"prologue_village": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "prologue_village",
+"type": "title"
+},
+"1": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "2",
+"replacements": [  ],
+"text": "Selamat datang di desa kecil ini, disini mereka hendak membuat festival yang menarik.",
+"translation_key": "Selamat datang di desa kecil ini, disini mereka hendak membuat festival yang menarik.",
+"type": "dialogue"
+},
+"10": {
+"character": "Raka",
+"character_replacements": [  ],
+"next_id": "11",
+"parent_id": "9",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Makasih sarannya ya, {{player_name}}! Benderanya sudah terpasang rapi.",
+"translation_key": "Makasih sarannya ya, {{player_name}}! Benderanya sudah terpasang rapi.",
+"type": "dialogue"
+},
+"11": {
+"next_id": "end",
+"parent_id": "9",
+"type": "goto"
+},
+"13": {
+"character": "Raka",
+"character_replacements": [  ],
+"next_id": "14",
+"replacements": [  ],
+"text": "*sigh~ tugasku sangat banyak sekali hari ini, mana waktunya mepet lagi...",
+"translation_key": "*sigh~ tugasku sangat banyak sekali hari ini, mana waktunya mepet lagi...",
+"type": "dialogue"
+},
+"14": {
+"character": "Raka",
+"character_replacements": [  ],
+"next_id": "15",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Eh itu kamu, {{player_name}} bisa bantu aku sebentar ga?",
+"translation_key": "Eh itu kamu, {{player_name}} bisa bantu aku sebentar ga?",
+"type": "dialogue"
+},
+"15": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "16",
+"replacements": [  ],
+"text": "Eh iya mas, ada apa ya?",
+"translation_key": "Eh iya mas, ada apa ya?",
+"type": "dialogue"
+},
+"16": {
+"character": "Raka",
+"character_replacements": [  ],
+"next_id": "17",
+"replacements": [  ],
+"text": "Gini tugasku untuk festival ini banyak sekali dan kurang cukup jika dilakukin sendiri, bisa bantu aku ga, bisa ambilin aku beberapa dekorasi buat nanti kalo ga bantu aku masang lentera dan bendera ini?",
+"translation_key": "Gini tugasku untuk festival ini banyak sekali dan kurang cukup jika dilakukin sendiri, bisa bantu aku ga, bisa ambilin aku beberapa dekorasi buat nanti kalo ga bantu aku masang lentera dan bendera ini?",
+"type": "dialogue"
+},
+"17": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "18",
+"replacements": [  ],
+"text": "hmmmm...",
+"translation_key": "hmmmm...",
+"type": "dialogue"
+},
+"18": {
+"next_id": "19",
+"next_id_after": "25",
+"replacements": [  ],
+"responses": PoolStringArray( "18", "22" ),
+"text": "Okelah aku bantu pasangin benderanya, terus mas Raka bisa pasang lenteranya.",
+"translation_key": "Okelah aku bantu pasangin benderanya, terus mas Raka bisa pasang lenteranya.",
+"type": "response"
+},
+"19": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "E"
+} ] ]
+} ]
+},
+"next_id": "20",
+"parent_id": "18",
+"type": "mutation"
+},
+"2": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "Tugasmu disini adalah membantu mereka jika memiliki kesusahan.",
+"translation_key": "Tugasmu disini adalah membantu mereka jika memiliki kesusahan.",
+"type": "dialogue"
+},
+"20": {
+"character": "Raka",
+"character_replacements": [  ],
+"next_id": "21",
+"parent_id": "18",
+"replacements": [  ],
+"text": "Oh okay bisa lebih cepat kalo kerjain sama-sama.",
+"translation_key": "Oh okay bisa lebih cepat kalo kerjain sama-sama.",
+"type": "dialogue"
+},
+"21": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_opsi_kolaborasi",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "25",
+"parent_id": "18",
+"type": "mutation"
+},
+"22": {
+"next_id": "23",
+"next_id_after": "25",
+"replacements": [  ],
+"text": "Baik aku ambilkan dekorasi lainnya selama mas Raka memasang dekorasinya.",
+"translation_key": "Baik aku ambilkan dekorasi lainnya selama mas Raka memasang dekorasinya.",
+"type": "response"
+},
+"23": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "I"
+} ] ]
+} ]
+},
+"next_id": "24",
+"parent_id": "22",
+"type": "mutation"
+},
+"24": {
+"character": "Raka",
+"character_replacements": [  ],
+"next_id": "25",
+"parent_id": "22",
+"replacements": [  ],
+"text": "Okok, buat dekorasinya di gudang ya.",
+"translation_key": "Okok, buat dekorasinya di gudang ya.",
+"type": "dialogue"
+},
+"25": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "26",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Raka dan {{player_name}}-pun menyelesaikan dekorasinya.",
+"translation_key": "Raka dan {{player_name}}-pun menyelesaikan dekorasinya.",
+"type": "dialogue"
+},
+"26": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "raka"
+} ] ]
+} ]
+},
+"next_id": "27",
+"type": "mutation"
+},
+"27": {
+"next_id": "end",
+"type": "goto"
+},
+"29": {
+"next_id": "30",
+"text": "npc_kaleva",
+"type": "title"
+},
+"3": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "4",
+"replacements": [  ],
+"text": "Ga semua gitu sih, mungkin kau juga akan dimintai pendapat atau lainnya..",
+"translation_key": "Ga semua gitu sih, mungkin kau juga akan dimintai pendapat atau lainnya..",
+"type": "dialogue"
+},
+"30": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "kaleva_selesai"
+} ]
+},
+"next_conditional_id": "34",
+"next_id": "31",
+"next_id_after": "34",
+"type": "condition"
+},
+"31": {
+"character": "Kaleva",
+"character_replacements": [  ],
+"next_id": "32",
+"parent_id": "30",
+"replacements": [  ],
+"text": "Pengumuman festival sudah siap. Terima kasih atas bantuanmu!",
+"translation_key": "Pengumuman festival sudah siap. Terima kasih atas bantuanmu!",
+"type": "dialogue"
+},
+"32": {
+"next_id": "end",
+"parent_id": "30",
+"type": "goto"
+},
+"34": {
+"character": "Kaleva",
+"character_replacements": [  ],
+"next_id": "35",
+"replacements": [  ],
+"text": "Aduh, dah jam segini tapi undangan belom disampaikan, argh.",
+"translation_key": "Aduh, dah jam segini tapi undangan belom disampaikan, argh.",
+"type": "dialogue"
+},
+"35": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "36",
+"replacements": [  ],
+"text": "hmm bagaimana jika membuat pengumuman saja pak?",
+"translation_key": "hmm bagaimana jika membuat pengumuman saja pak?",
+"type": "dialogue"
+},
+"36": {
+"character": "Kaleva",
+"character_replacements": [  ],
+"next_id": "37",
+"replacements": [  ],
+"text": "Bisa juga, tetapi aku khawatir beberapa warga tidak membacanya.",
+"translation_key": "Bisa juga, tetapi aku khawatir beberapa warga tidak membacanya.",
+"type": "dialogue"
+},
+"37": {
+"next_id": "38",
+"next_id_after": "44",
+"replacements": [  ],
+"responses": PoolStringArray( "37", "41" ),
+"text": "Bagaimana kalo dipasang di papan desa, kan dekat alun-alun jadi banyak yang baca.",
+"translation_key": "Bagaimana kalo dipasang di papan desa, kan dekat alun-alun jadi banyak yang baca.",
+"type": "response"
+},
+"38": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "I"
+} ] ]
+} ]
+},
+"next_id": "39",
+"parent_id": "37",
+"type": "mutation"
+},
+"39": {
+"mutation": {
+"expression": [ {
+"function": "pilih_opsi_papan_kaleva",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "40",
+"parent_id": "37",
+"type": "mutation"
+},
+"4": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Bantulah mereka, aku akan tunggu di akhir cerita.",
+"translation_key": "Bantulah mereka, aku akan tunggu di akhir cerita.",
+"type": "dialogue"
+},
+"40": {
+"character": "Kaleva",
+"character_replacements": [  ],
+"next_id": "44",
+"parent_id": "37",
+"replacements": [  ],
+"text": "Benar juga, papan pengumuman sering dibaca orang-orang, bisa menghemat waktu.",
+"translation_key": "Benar juga, papan pengumuman sering dibaca orang-orang, bisa menghemat waktu.",
+"type": "dialogue"
+},
+"41": {
+"next_id": "42",
+"next_id_after": "44",
+"replacements": [  ],
+"text": "Bagaimana kalau dibagi saja undangannya secara langsung, sekalian kita ajak.",
+"translation_key": "Bagaimana kalau dibagi saja undangannya secara langsung, sekalian kita ajak.",
+"type": "response"
+},
+"42": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "E"
+} ] ]
+} ]
+},
+"next_id": "43",
+"parent_id": "41",
+"type": "mutation"
+},
+"43": {
+"character": "Kaleva",
+"character_replacements": [  ],
+"next_id": "44",
+"parent_id": "41",
+"replacements": [  ],
+"text": "Baiklah kau ambil setengah desa dan aku ambil setengahnya, semoga saja cukup.",
+"translation_key": "Baiklah kau ambil setengah desa dan aku ambil setengahnya, semoga saja cukup.",
+"type": "dialogue"
+},
+"44": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "45",
+"replacements": [  ],
+"text": "Mereka pun dapat menyelesaikan masalah tersebut tepat waktu.",
+"translation_key": "Mereka pun dapat menyelesaikan masalah tersebut tepat waktu.",
+"type": "dialogue"
+},
+"45": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "kaleva"
+} ] ]
+} ]
+},
+"next_id": "46",
+"type": "mutation"
+},
+"46": {
+"next_id": "end",
+"type": "goto"
+},
+"48": {
+"next_id": "49",
+"text": "npc_annie",
+"type": "title"
+},
+"49": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "annie_selesai"
+} ]
+},
+"next_conditional_id": "53",
+"next_id": "50",
+"next_id_after": "53",
+"type": "condition"
+},
+"5": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "6",
+"replacements": [  ],
+"text": "ye.. dia malah pergi, ya udah ayo!",
+"translation_key": "ye.. dia malah pergi, ya udah ayo!",
+"type": "dialogue"
+},
+"50": {
+"character": "Annie",
+"character_replacements": [  ],
+"next_id": "51",
+"parent_id": "49",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Istirahatlah yang cukup, {{player_name}}. Nikmati festivalnya!",
+"translation_key": "Istirahatlah yang cukup, {{player_name}}. Nikmati festivalnya!",
+"type": "dialogue"
+},
+"51": {
+"next_id": "end",
+"parent_id": "49",
+"type": "goto"
+},
+"53": {
+"character": "Annie",
+"character_replacements": [  ],
+"next_id": "54",
+"replacements": [  ],
+"text": "Hi..., terimakasih sudah membantu desa kami.",
+"translation_key": "Hi..., terimakasih sudah membantu desa kami.",
+"type": "dialogue"
+},
+"54": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "55",
+"replacements": [  ],
+"text": "Ah tidak apa-apa, cuma bantuan kecil doang kok hehe...",
+"translation_key": "Ah tidak apa-apa, cuma bantuan kecil doang kok hehe...",
+"type": "dialogue"
+},
+"55": {
+"character": "Annie",
+"character_replacements": [  ],
+"next_id": "56",
+"replacements": [  ],
+"text": "Beristirahatlah disini sebentar.",
+"translation_key": "Beristirahatlah disini sebentar.",
+"type": "dialogue"
+},
+"56": {
+"next_id": "57",
+"next_id_after": "62",
+"replacements": [  ],
+"responses": PoolStringArray( "56", "59" ),
+"text": "Baiklah, aku juga ingin menceritakan banyak hal padamu.",
+"translation_key": "Baiklah, aku juga ingin menceritakan banyak hal padamu.",
+"type": "response"
+},
+"57": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "E"
+} ] ]
+} ]
+},
+"next_id": "58",
+"parent_id": "56",
+"type": "mutation"
+},
+"58": {
+"character": "Annie",
+"character_replacements": [  ],
+"next_id": "62",
+"parent_id": "56",
+"replacements": [  ],
+"text": "Pasti seru sekali kisahmu.",
+"translation_key": "Pasti seru sekali kisahmu.",
+"type": "dialogue"
+},
+"59": {
+"next_id": "60",
+"next_id_after": "62",
+"replacements": [  ],
+"text": "Terimakasih, aku juga butuh istirahat sebelum melanjutkan perjalanan.",
+"translation_key": "Terimakasih, aku juga butuh istirahat sebelum melanjutkan perjalanan.",
+"type": "response"
+},
+"6": {
+"next_id": "end",
+"type": "goto"
+},
+"60": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "I"
+} ] ]
+} ]
+},
+"next_id": "61",
+"parent_id": "59",
+"type": "mutation"
+},
+"61": {
+"character": "Annie",
+"character_replacements": [  ],
+"next_id": "62",
+"parent_id": "59",
+"replacements": [  ],
+"text": "Sama-sama, aku tau kau pasti lelah.",
+"translation_key": "Sama-sama, aku tau kau pasti lelah.",
+"type": "dialogue"
+},
+"62": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "63",
+"replacements": [  ],
+"text": "Mereka pun beristirahat bersama, malah pacaran *humph~",
+"translation_key": "Mereka pun beristirahat bersama, malah pacaran *humph~",
+"type": "dialogue"
+},
+"63": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "annie"
+} ] ]
+} ]
+},
+"next_id": "64",
+"type": "mutation"
+},
+"64": {
+"next_id": "end",
+"type": "goto"
+},
+"65": {
+"next_id": "66",
+"text": "panggil_mc",
+"type": "title"
+},
+"66": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "67",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Hai {{player_name}}, sini kamu!",
+"translation_key": "Hai {{player_name}}, sini kamu!",
+"type": "dialogue"
+},
+"67": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "68",
+"replacements": [  ],
+"text": "Eh, itu Gatekeeper manggil kamu. Ayo samperin!",
+"translation_key": "Eh, itu Gatekeeper manggil kamu. Ayo samperin!",
+"type": "dialogue"
+},
+"68": {
+"next_id": "end",
+"type": "goto"
+},
+"69": {
+"next_id": "70",
+"text": "epilogue_village",
+"type": "title"
+},
+"70": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "quest_selesai"
+}, {
+"type": "comparison",
+"value": "<"
+}, {
+"type": "number",
+"value": 3
+} ]
+},
+"next_conditional_id": "74",
+"next_id": "71",
+"next_id_after": "74",
+"type": "condition"
+},
+"71": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "72",
+"parent_id": "70",
+"replacements": [  ],
+"text": "Masih ada warga desa yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"translation_key": "Masih ada warga desa yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"type": "dialogue"
+},
+"72": {
+"next_id": "end",
+"parent_id": "70",
+"type": "goto"
+},
+"74": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "75",
+"replacements": [  ],
+"text": "Semua sudah bahagia disini, itu berkat bantuan kecilmu.",
+"translation_key": "Semua sudah bahagia disini, itu berkat bantuan kecilmu.",
+"type": "dialogue"
+},
+"75": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "76",
+"replacements": [  ],
+"text": "Ah... aku cuma bantu-bantu aja, ga sebesar itu kok.",
+"translation_key": "Ah... aku cuma bantu-bantu aja, ga sebesar itu kok.",
+"type": "dialogue"
+},
+"76": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "77",
+"replacements": [  ],
+"text": "Semua bantuan itu berharga loh.",
+"translation_key": "Semua bantuan itu berharga loh.",
+"type": "dialogue"
+},
+"77": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "78",
+"replacements": [  ],
+"text": "Benar sekali, karena itu masih ada dunia lainnya yang butuh bantuanmu.",
+"translation_key": "Benar sekali, karena itu masih ada dunia lainnya yang butuh bantuanmu.",
+"type": "dialogue"
+},
+"78": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "79",
+"replacements": [  ],
+"text": "Baiklah, mari kita lanjutkan.",
+"translation_key": "Baiklah, mari kita lanjutkan.",
+"type": "dialogue"
+},
+"79": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "80",
+"replacements": [  ],
+"text": "Kami pun pergi menuju dunia selanjutnya dengan arahan gatekeeper.",
+"translation_key": "Kami pun pergi menuju dunia selanjutnya dengan arahan gatekeeper.",
+"type": "dialogue"
+},
+"8": {
+"next_id": "9",
+"text": "npc_raka",
+"type": "title"
+},
+"80": {
+"mutation": {
+"expression": [ {
+"function": "pindah_zona_acak",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "81",
+"type": "mutation"
+},
+"81": {
+"next_id": "end",
+"type": "goto"
+},
+"9": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "raka_selesai"
+} ]
+},
+"next_conditional_id": "13",
+"next_id": "10",
+"next_id_after": "13",
+"type": "condition"
+}
+}

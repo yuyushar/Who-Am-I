@@ -1,0 +1,82 @@
+{
+    "ISTJ": {
+        "class": "Leader",
+        "role": "Inspector",
+        "desc": "The Inspector adalah penyelenggara yang bertanggung jawab, yang terdorong untuk menciptakan dan menegakkan ketertiban di dalam sistem dan institusi. Praktis, teliti, dan mengutamakan fakta nyata serta integritas tinggi."
+    },
+    "INTJ": {
+        "class": "Leader",
+        "role": "Mastermind",
+        "desc": "The Mastermind adalah pemikir strategis dengan visi jangka panjang yang tajam. Selalu termotivasi untuk merombak dan menyempurnakan sistem rumit dengan ide-ide inovatif serta perencanaan matang."
+    },
+    "ESTJ": {
+        "class": "Leader",
+        "role": "Supervisor",
+        "desc": "The Supervisor adalah organisator tegas dan pekerja keras yang selalu siap memimpin. Berorientasi pada hasil nyata, menjunjung tinggi keteraturan, dan piawai menggerakkan orang serta proyek secara efisien."
+    },
+    "ENTJ": {
+        "class": "Leader",
+        "role": "Commander",
+        "desc": "The Commander adalah pemimpin visioner dan berani yang tidak kenal lelah. Menguasai pemetaan strategi besar, cepat mengambil keputusan penting, dan mampu mengubah setiap rintangan menjadi keberhasilan."
+    },
+    "ISFJ": {
+        "class": "Parserv",
+        "role": "Protector",
+        "desc": "The Protector adalah pengasuh yang setia, teliti, dan berdedikasi tinggi. Selalu siap membela keharmonisan dan memberikan perhatian tulus demi menjaga keamanan dan kenyamanan orang-orang tersayang."
+    },
+    "INFJ": {
+        "class": "Parserv",
+        "role": "Counselor",
+        "desc": "The Counselor adalah pengayom berwawasan batin mendalam dengan integritas pribadi yang kokoh. Penuh empati dan idealisme, selalu bertekad membimbing sesama untuk mewujudkan potensi terbaik dalam hidup mereka."
+    },
+    "ESFJ": {
+        "class": "Parserv",
+        "role": "Provider",
+        "desc": "The Provider adalah penolong yang hangat, ramah, dan penuh energi sosial. Sangat peka terhadap kebutuhan lingkungan sekitarnya serta berdedikasi untuk menciptakan keharmonisan dan kebersamaan komunitas."
+    },
+    "ENFJ": {
+        "class": "Parserv",
+        "role": "Teacher",
+        "desc": "The Teacher adalah pembimbing karismatik dan inspiratif yang mampu memikat hati banyak orang. Terdorong oleh nilai kemanusiaan, mereka memimpin dengan empati alami menuju masa depan yang lebih bermakna."
+    },
+    "ISTP": {
+        "class": "Briliance",
+        "role": "Craftsman",
+        "desc": "The Craftsman adalah penemu praktis dengan pemahaman mekanis yang luar biasa. Cepat menguasai berbagai alat, tenang menghadapi situasi mendadak, dan selalu menemukan solusi logis paling efisien."
+    },
+    "INTP": {
+        "class": "Briliance",
+        "role": "Architect",
+        "desc": "The Architect adalah pemikir filosofis dan inovator logis yang terpesona oleh pola serta teori mendalam. Berjiwa analitis tinggi, selalu mencari kebenaran hakiki dan prinsip kerja di balik segala fenomena dunia."
+    },
+    "ESTP": {
+        "class": "Briliance",
+        "role": "Dynamo",
+        "desc": "The Dynamo adalah pengambil aksi energik dan pemberani yang menikmati dinamika hidup di saat ini. Gesit, cerdas membaca situasi, dan piawai menemukan jalan keluar instan di tengah tantangan nyata."
+    },
+    "ENTP": {
+        "class": "Briliance",
+        "role": "Visionary",
+        "desc": "The Visionary adalah inovator berjiwa bebas yang tertantang oleh gagasan intelektual baru. Gesit dalam berargumen, cerdas merangkai kemungkinan, dan ahli menciptakan solusi kreatif di luar kelaziman."
+    },
+    "ISFP": {
+        "class": "Popularity",
+        "role": "Composer",
+        "desc": "The Composer adalah penjelajah estetika yang lembut, ramah, dan menikmati keindahan setiap momen. Mengekspresikan nilai batin melalui seni dan tindakan nyata dengan kehangatan spontan yang menawan."
+    },
+    "INFP": {
+        "class": "Popularity",
+        "role": "Healer",
+        "desc": "The Healer adalah idealis puitis dan berhati mulia yang dibimbing oleh prinsip moral serta keyakinan otentik. Selalu mencari secercah kebaikan dalam setiap insan dan setia mendengarkan panggilan nurani terdalam."
+    },
+    "ESFP": {
+        "class": "Popularity",
+        "role": "Performer",
+        "desc": "The Performer adalah penghibur ceria yang membawa semangat positif ke mana pun mereka melangkah. Spontan, energik, dan menawan, mampu menghidupkan suasana dengan keceriaan yang menular."
+    },
+    "ENFP": {
+        "class": "Popularity",
+        "role": "Champion",
+        "desc": "The Champion adalah kreator antusias yang melihat potensi tanpa batas dalam segala hal. Ramah, imajinatif, dan penuh inspirasi baru, mampu menyatukan berbagai ide dan orang dengan kehangatan yang tulus."
+    }
+}

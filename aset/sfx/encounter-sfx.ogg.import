@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/encounter-sfx.ogg-1fb75454efe679703693fcf86c31b316.oggstr"
+
+[deps]
+
+source_file="res://aset/sfx/encounter-sfx.ogg"
+dest_files=[ "res://.import/encounter-sfx.ogg-1fb75454efe679703693fcf86c31b316.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

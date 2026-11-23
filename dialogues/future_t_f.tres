@@ -1,0 +1,965 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 14
+syntax_version = 2
+raw_text = "~ prologue_future
+if zona_ke == 1
+	Guide: WAAAH! Silau banget! Peringatan photosensitive buat mataku yang imut ini!
+	Player: Cahaya neon, hologram melayang, dan bangunan menjulang tinggi... Tempat apa ini?
+	Gatekeeper: Selamat datang di awal perjalananmu. Ini adalah The Nexus, kota masa depan yang tak pernah tidur dan selalu bercahaya.
+	Gatekeeper: Di dunia yang dikendalikan oleh logika dan teknologi canggih ini, masalah rumit tetap tak bisa dihindari.
+	Guide: Hu'uh, walaupun banyak robot canggih, mereka tetap butuh bantuan lho!
+	Guide: Nah {{player_name}}, langkah pertamamu dimulai di sini! Cari dan bicaralah dengan penduduk di sekitar kota ini.
+	Player: Jadi aku harus membantu mereka memecahkan masalahnya?
+	Gatekeeper: Benar. Cara dan prinsipmu dalam menyelesaikan dilema di kota ini akan mulai membentuk pola pikir sejatimu.
+	Gatekeeper: Bantulah mereka yang membutuhkan. Aku akan menunggumu di gerbang Nexus saat kau menyelesaikan tugasmu.
+	Guide: *sigh~ Kebiasaan deh main ngilang... Tapi tidak apa-apa, ayo {{player_name}}, kita jelajahi kota futuristik ini!
+else
+	Guide: Woah! Lampu-lampu neon yang keren! Kita mendarat di dunia serba canggih!
+	Player: Suasananya sangat futuristik dan penuh teknologi ya, kontras sekali dengan dunia sebelumnya.
+	Gatekeeper: Ini adalah The Nexus. Di balik kecanggihannya, tetap ada konflik dan dilema yang menuntut keputusan bijak.
+	Guide: Dan itulah alasan kita ke sini! Seperti biasa, mari temui penduduk dan robot di sini yang butuh bantuanmu!
+	Gatekeeper: Setiap keputusan logis maupun empatimu di sini sangat berarti. Aku akan menunggumu di gerbang Nexus setelah semuanya selesai.
+	Guide: Sip! Yuk {{player_name}}, kita cari siapa yang sedang menghadapi kesulitan!
+=> END
+
+~ npc_agcl
+if agcl_selesai
+	Ag_CL: Terima kasih atas bantuan logikamu tadi ya, {{player_name}}!
+	=> END
+
+Ag_CL: annndddd... done! Okay, sudah berhasil!
+Ag_CL: Eh, kamu yang di sana... aku bisa minta pendapatmu sebentar tidak?
+Player: Uh... ada apa ya?
+Ag_CL: Aku baru saja menemukan celah keamanan fatal pada AI pengelola data kota, yang menyebabkan data semua penduduk bisa diakses secara publik!
+Player: Ah?! Waduh, bahaya banget itu!
+Ag_CL: Makanya aku butuh sudut pandangmu. Sebaiknya aku langsung memperbaiki sistemnya dulu, atau memastikan warga yang datanya sudah bocor segera mendapatkan bantuan?
+Player: Hmmmm...
+- Sebaiknya perbaiki sistemnya dulu agar lebih aman dan tidak terjadi kebocoran lainnya
+	do tambah_poin(\"T\")
+	Ag_CL: Benar juga. Kita harus tutup akses dan tambal celahnya dulu agar tidak menimbulkan kerusakan lebih luas.
+- Sebaiknya kita membantu korban-korban dulu dengan memberitahu dan mengamankan informasi mereka
+	do tambah_poin(\"F\")
+	Ag_CL: Baik. Transparansi dan keselamatan korban adalah prioritas utama agar mereka bisa segera bertindak.
+Guide: Mereka pun berhasil menyelesaikan masalah kebocoran data tersebut.
+Guide: Tapi jujur saja ya, aku sama sekali tidak paham kodingan tadi... begitu juga kamu kan?
+Player: Shush! Diam ah!
+do selesaikan_npc(\"agcl\")
+=> END
+
+~ npc_k4iro
+if k4iro_selesai
+	K-41RO: Status: Normal. Terima kasih banyak atas bantuan analisismu, {{player_name}}.
+	=> END
+
+Player: Kenapa panel monitor itu berkedip-kedip merah?
+K-41RO: Penjelasan: Ini adalah pusat kendali sumber daya energi dari seluruh kota.
+K-41RO: Masalah: Terjadi lonjakan penurunan daya secara drastis pada reaktor utama.
+Player: Waduh, lalu apa yang harus kita lakukan?
+K-41RO: Alternatif: Sumber daya cadangan dapat dialokasikan untuk menahan defisit energi kota untuk sementara waktu.
+K-41RO: Masalah lanjutan: Kapasitas energi cadangan sangat terbatas. Diperlukan penentuan prioritas alokasi energi.
+Player: Hmmm... pembagian prioritas ya...
+- Bagaimana kalau kita menghitung kebutuhan energi setiap fasilitas terlebih dahulu? Lalu menentukan prioritas berdasarkan kapasitas dan tingkat kepentingannya
+	do tambah_poin(\"T\")
+	do stabilkan_energi_k4iro()
+	K-41RO: Resolusi: Dengan mengkalkulasi kebutuhan tiap fasilitas, alokasi energi dapat didistribusikan secara efisien dan teratur.
+- Bagaimana kalau kita melihat fasilitas mana yang paling dibutuhkan penduduk saat ini? Jangan sampai ada masyarakat yang terlalu terdampak karena gangguan ini
+	do tambah_poin(\"F\")
+	do stabilkan_energi_k4iro()
+	K-41RO: Resolusi: Kebutuhan mendesak warga diprioritaskan agar aktivitas vital masyarakat tidak terganggu.
+Guide: Mereka pun berhasil mengatasi krisis keterbatasan energi kota!
+do selesaikan_npc(\"k4iro\")
+=> END
+
+~ npc_elio
+if elio_selesai
+	Elio: Terima kasih atas saranmu tempo hari, {{player_name}}. Pameran seni berjalan dengan sangat sukses.
+	=> END
+
+Elio: Hm... Tidak akan cukup ruang galeri ini...
+Player: Permisi, kalau boleh tahu ada kendala apa ya?
+Elio: Ah... saya adalah kurator pameran seni holografik ini. Terlalu banyak seniman hebat yang mengirimkan karya mereka, namun kapasitas ruangan kami tidak mencukupi.
+Player: Hmm... berarti harus ada kurasi seleksi untuk karya yang akan dipamerkan ya?
+Elio: Tepat sekali. Setiap karya memiliki keunikan tersendiri, membuat saya sulit menentukan pilihan.
+- Bagaimana kalau kita menentukan beberapa kriteria terlebih dahulu, seperti kualitas visual, kesesuaian tema, dan teknik pembuatannya?
+	do tambah_poin(\"T\")
+	Elio: Pendekatan yang baik. Menilai dengan kriteria yang konsisten, mutu visual, dan standar yang sistematis. Terima kasih.
+- Bagaimana kalau kita mendengarkan cerita dan latar belakang dari para senimannya terlebih dahulu?
+	do tambah_poin(\"F\")
+	Elio: Pendekatan yang menyentuh. Menilai dari nilai personal, ekspresi emosional, dan kedalaman makna di balik setiap karya. Terima kasih.
+Guide: Mereka pun menyeleksi karya-karya seni tersebut dengan penuh seksama.
+do selesaikan_npc(\"elio\")
+=> END
+
+~ panggil_mc_future
+Gatekeeper: Hai {{player_name}}, kemarilah!
+Guide: Eh, Gatekeeper sudah menunggu di gerbang. Ayo kita temui dia!
+=> END
+
+~ epilogue_future
+if quest_selesai < 3
+	Gatekeeper: Masih ada orang di kota ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!
+	=> END
+
+Player: Woah! Kepalaku mulai pusing dengan semua gemerlap cahaya ini...
+Guide: Iya nih, siapa sih yang punya ide membuat tempat yang begitu terang benderang begini?!
+Gatekeeper: Dunia ini memang didesain untuk beraktivitas sepanjang hari tanpa pernah padam.
+Guide: Jadi ga ada istirahatnya sama sekali? Sebaiknya kita cepat-cepat pergi dari sini yuk!
+Player: Jadi kemana tujuan selanjutnya kita?
+Gatekeeper: Mari ikuti aku, kita akan menuju dunia selanjutnya.
+do pindah_zona_acak()
+=> END"
+errors = [  ]
+titles = {
+"epilogue_future": "86",
+"npc_agcl": "13",
+"npc_elio": "61",
+"npc_k4iro": "37",
+"panggil_mc_future": "81",
+"prologue_future": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "prologue_future",
+"type": "title"
+},
+"1": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "2",
+"replacements": [  ],
+"text": "Woah! Photosensitive warning guys!",
+"translation_key": "Woah! Photosensitive warning guys!",
+"type": "dialogue"
+},
+"10": {
+"next_id": "end",
+"type": "goto"
+},
+"12": {
+"next_id": "13",
+"text": "npc_agcl",
+"type": "title"
+},
+"13": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "agcl_selesai"
+} ]
+},
+"next_conditional_id": "17",
+"next_id": "14",
+"next_id_after": "17",
+"type": "condition"
+},
+"14": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "15",
+"parent_id": "13",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Terima kasih atas bantuan logikamu tadi ya, {{player_name}}!",
+"translation_key": "Terima kasih atas bantuan logikamu tadi ya, {{player_name}}!",
+"type": "dialogue"
+},
+"15": {
+"next_id": "end",
+"parent_id": "13",
+"type": "goto"
+},
+"17": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "18",
+"replacements": [  ],
+"text": "annndddd... done! Okay, sudah berhasil!",
+"translation_key": "annndddd... done! Okay, sudah berhasil!",
+"type": "dialogue"
+},
+"18": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "19",
+"replacements": [  ],
+"text": "Eh, kamu yang di sana... aku bisa minta pendapatmu sebentar tidak?",
+"translation_key": "Eh, kamu yang di sana... aku bisa minta pendapatmu sebentar tidak?",
+"type": "dialogue"
+},
+"19": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "20",
+"replacements": [  ],
+"text": "Uh... ada apa ya?",
+"translation_key": "Uh... ada apa ya?",
+"type": "dialogue"
+},
+"2": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "Eh~ aku dah biasa sama cahaya terang di kegelapan begini.",
+"translation_key": "Eh~ aku dah biasa sama cahaya terang di kegelapan begini.",
+"type": "dialogue"
+},
+"20": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "21",
+"replacements": [  ],
+"text": "Aku baru saja menemukan celah keamanan fatal pada AI pengelola data kota, yang menyebabkan data semua penduduk bisa diakses secara publik!",
+"translation_key": "Aku baru saja menemukan celah keamanan fatal pada AI pengelola data kota, yang menyebabkan data semua penduduk bisa diakses secara publik!",
+"type": "dialogue"
+},
+"21": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "22",
+"replacements": [  ],
+"text": "Ah?! Waduh, bahaya banget itu!",
+"translation_key": "Ah?! Waduh, bahaya banget itu!",
+"type": "dialogue"
+},
+"22": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "23",
+"replacements": [  ],
+"text": "Makanya aku butuh sudut pandangmu. Sebaiknya aku langsung memperbaiki sistemnya dulu, atau memastikan warga yang datanya sudah bocor segera mendapatkan bantuan?",
+"translation_key": "Makanya aku butuh sudut pandangmu. Sebaiknya aku langsung memperbaiki sistemnya dulu, atau memastikan warga yang datanya sudah bocor segera mendapatkan bantuan?",
+"type": "dialogue"
+},
+"23": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "24",
+"replacements": [  ],
+"text": "Hmmmm...",
+"translation_key": "Hmmmm...",
+"type": "dialogue"
+},
+"24": {
+"next_id": "25",
+"next_id_after": "30",
+"replacements": [  ],
+"responses": PoolStringArray( "24", "27" ),
+"text": "Sebaiknya perbaiki sistemnya dulu agar lebih aman dan tidak terjadi kebocoran lainnya",
+"translation_key": "Sebaiknya perbaiki sistemnya dulu agar lebih aman dan tidak terjadi kebocoran lainnya",
+"type": "response"
+},
+"25": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "T"
+} ] ]
+} ]
+},
+"next_id": "26",
+"parent_id": "24",
+"type": "mutation"
+},
+"26": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "30",
+"parent_id": "24",
+"replacements": [  ],
+"text": "Benar juga. Kita harus tutup akses dan tambal celahnya dulu agar tidak menimbulkan kerusakan lebih luas.",
+"translation_key": "Benar juga. Kita harus tutup akses dan tambal celahnya dulu agar tidak menimbulkan kerusakan lebih luas.",
+"type": "dialogue"
+},
+"27": {
+"next_id": "28",
+"next_id_after": "30",
+"replacements": [  ],
+"text": "Sebaiknya kita membantu korban-korban dulu dengan memberitahu dan mengamankan informasi mereka",
+"translation_key": "Sebaiknya kita membantu korban-korban dulu dengan memberitahu dan mengamankan informasi mereka",
+"type": "response"
+},
+"28": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "F"
+} ] ]
+} ]
+},
+"next_id": "29",
+"parent_id": "27",
+"type": "mutation"
+},
+"29": {
+"character": "Ag_CL",
+"character_replacements": [  ],
+"next_id": "30",
+"parent_id": "27",
+"replacements": [  ],
+"text": "Baik. Transparansi dan keselamatan korban adalah prioritas utama agar mereka bisa segera bertindak.",
+"translation_key": "Baik. Transparansi dan keselamatan korban adalah prioritas utama agar mereka bisa segera bertindak.",
+"type": "dialogue"
+},
+"3": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "4",
+"replacements": [  ],
+"text": "Ini adalah The Nexus, dunia yang tidak pernah tidur dan selalu bercahaya.",
+"translation_key": "Ini adalah The Nexus, dunia yang tidak pernah tidur dan selalu bercahaya.",
+"type": "dialogue"
+},
+"30": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "31",
+"replacements": [  ],
+"text": "Mereka pun berhasil menyelesaikan masalah kebocoran data tersebut.",
+"translation_key": "Mereka pun berhasil menyelesaikan masalah kebocoran data tersebut.",
+"type": "dialogue"
+},
+"31": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "32",
+"replacements": [  ],
+"text": "Tapi jujur saja ya, aku sama sekali tidak paham kodingan tadi... begitu juga kamu kan?",
+"translation_key": "Tapi jujur saja ya, aku sama sekali tidak paham kodingan tadi... begitu juga kamu kan?",
+"type": "dialogue"
+},
+"32": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "33",
+"replacements": [  ],
+"text": "Shush! Diam ah!",
+"translation_key": "Shush! Diam ah!",
+"type": "dialogue"
+},
+"33": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "agcl"
+} ] ]
+} ]
+},
+"next_id": "34",
+"type": "mutation"
+},
+"34": {
+"next_id": "end",
+"type": "goto"
+},
+"36": {
+"next_id": "37",
+"text": "npc_k4iro",
+"type": "title"
+},
+"37": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "k4iro_selesai"
+} ]
+},
+"next_conditional_id": "41",
+"next_id": "38",
+"next_id_after": "41",
+"type": "condition"
+},
+"38": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "39",
+"parent_id": "37",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Status: Normal. Terima kasih banyak atas bantuan analisismu, {{player_name}}.",
+"translation_key": "Status: Normal. Terima kasih banyak atas bantuan analisismu, {{player_name}}.",
+"type": "dialogue"
+},
+"39": {
+"next_id": "end",
+"parent_id": "37",
+"type": "goto"
+},
+"4": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Walaupun begitu, pasti tetap ada masalah juga kan di sini?",
+"translation_key": "Walaupun begitu, pasti tetap ada masalah juga kan di sini?",
+"type": "dialogue"
+},
+"41": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "42",
+"replacements": [  ],
+"text": "Kenapa panel monitor itu berkedip-kedip merah?",
+"translation_key": "Kenapa panel monitor itu berkedip-kedip merah?",
+"type": "dialogue"
+},
+"42": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "43",
+"replacements": [  ],
+"text": "Penjelasan: Ini adalah pusat kendali sumber daya energi dari seluruh kota.",
+"translation_key": "Penjelasan: Ini adalah pusat kendali sumber daya energi dari seluruh kota.",
+"type": "dialogue"
+},
+"43": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "44",
+"replacements": [  ],
+"text": "Masalah: Terjadi lonjakan penurunan daya secara drastis pada reaktor utama.",
+"translation_key": "Masalah: Terjadi lonjakan penurunan daya secara drastis pada reaktor utama.",
+"type": "dialogue"
+},
+"44": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "45",
+"replacements": [  ],
+"text": "Waduh, lalu apa yang harus kita lakukan?",
+"translation_key": "Waduh, lalu apa yang harus kita lakukan?",
+"type": "dialogue"
+},
+"45": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "46",
+"replacements": [  ],
+"text": "Alternatif: Sumber daya cadangan dapat dialokasikan untuk menahan defisit energi kota untuk sementara waktu.",
+"translation_key": "Alternatif: Sumber daya cadangan dapat dialokasikan untuk menahan defisit energi kota untuk sementara waktu.",
+"type": "dialogue"
+},
+"46": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "47",
+"replacements": [  ],
+"text": "Masalah lanjutan: Kapasitas energi cadangan sangat terbatas. Diperlukan penentuan prioritas alokasi energi.",
+"translation_key": "Masalah lanjutan: Kapasitas energi cadangan sangat terbatas. Diperlukan penentuan prioritas alokasi energi.",
+"type": "dialogue"
+},
+"47": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "48",
+"replacements": [  ],
+"text": "Hmmm... pembagian prioritas ya...",
+"translation_key": "Hmmm... pembagian prioritas ya...",
+"type": "dialogue"
+},
+"48": {
+"next_id": "49",
+"next_id_after": "56",
+"replacements": [  ],
+"responses": PoolStringArray( "48", "52" ),
+"text": "Bagaimana kalau kita menghitung kebutuhan energi setiap fasilitas terlebih dahulu? Lalu menentukan prioritas berdasarkan kapasitas dan tingkat kepentingannya",
+"translation_key": "Bagaimana kalau kita menghitung kebutuhan energi setiap fasilitas terlebih dahulu? Lalu menentukan prioritas berdasarkan kapasitas dan tingkat kepentingannya",
+"type": "response"
+},
+"49": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "T"
+} ] ]
+} ]
+},
+"next_id": "50",
+"parent_id": "48",
+"type": "mutation"
+},
+"5": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "6",
+"replacements": [  ],
+"text": "Benar sekali. Masalah dan kekacauan adalah hal yang tak bisa lepas dari kehidupan.",
+"translation_key": "Benar sekali. Masalah dan kekacauan adalah hal yang tak bisa lepas dari kehidupan.",
+"type": "dialogue"
+},
+"50": {
+"mutation": {
+"expression": [ {
+"function": "stabilkan_energi_k4iro",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "51",
+"parent_id": "48",
+"type": "mutation"
+},
+"51": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "56",
+"parent_id": "48",
+"replacements": [  ],
+"text": "Resolusi: Dengan mengkalkulasi kebutuhan tiap fasilitas, alokasi energi dapat didistribusikan secara efisien dan teratur.",
+"translation_key": "Resolusi: Dengan mengkalkulasi kebutuhan tiap fasilitas, alokasi energi dapat didistribusikan secara efisien dan teratur.",
+"type": "dialogue"
+},
+"52": {
+"next_id": "53",
+"next_id_after": "56",
+"replacements": [  ],
+"text": "Bagaimana kalau kita melihat fasilitas mana yang paling dibutuhkan penduduk saat ini? Jangan sampai ada masyarakat yang terlalu terdampak karena gangguan ini",
+"translation_key": "Bagaimana kalau kita melihat fasilitas mana yang paling dibutuhkan penduduk saat ini? Jangan sampai ada masyarakat yang terlalu terdampak karena gangguan ini",
+"type": "response"
+},
+"53": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "F"
+} ] ]
+} ]
+},
+"next_id": "54",
+"parent_id": "52",
+"type": "mutation"
+},
+"54": {
+"mutation": {
+"expression": [ {
+"function": "stabilkan_energi_k4iro",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "55",
+"parent_id": "52",
+"type": "mutation"
+},
+"55": {
+"character": "K-41RO",
+"character_replacements": [  ],
+"next_id": "56",
+"parent_id": "52",
+"replacements": [  ],
+"text": "Resolusi: Kebutuhan mendesak warga diprioritaskan agar aktivitas vital masyarakat tidak terganggu.",
+"translation_key": "Resolusi: Kebutuhan mendesak warga diprioritaskan agar aktivitas vital masyarakat tidak terganggu.",
+"type": "dialogue"
+},
+"56": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "57",
+"replacements": [  ],
+"text": "Mereka pun berhasil mengatasi krisis keterbatasan energi kota!",
+"translation_key": "Mereka pun berhasil mengatasi krisis keterbatasan energi kota!",
+"type": "dialogue"
+},
+"57": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "k4iro"
+} ] ]
+} ]
+},
+"next_id": "58",
+"type": "mutation"
+},
+"58": {
+"next_id": "end",
+"type": "goto"
+},
+"6": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "7",
+"replacements": [  ],
+"text": "Ga bisa dibilang manusiawi juga sih... di sini kan hampir semuanya robot dan teknologi canggih.",
+"translation_key": "Ga bisa dibilang manusiawi juga sih... di sini kan hampir semuanya robot dan teknologi canggih.",
+"type": "dialogue"
+},
+"60": {
+"next_id": "61",
+"text": "npc_elio",
+"type": "title"
+},
+"61": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "elio_selesai"
+} ]
+},
+"next_conditional_id": "65",
+"next_id": "62",
+"next_id_after": "65",
+"type": "condition"
+},
+"62": {
+"character": "Elio",
+"character_replacements": [  ],
+"next_id": "63",
+"parent_id": "61",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Terima kasih atas saranmu tempo hari, {{player_name}}. Pameran seni berjalan dengan sangat sukses.",
+"translation_key": "Terima kasih atas saranmu tempo hari, {{player_name}}. Pameran seni berjalan dengan sangat sukses.",
+"type": "dialogue"
+},
+"63": {
+"next_id": "end",
+"parent_id": "61",
+"type": "goto"
+},
+"65": {
+"character": "Elio",
+"character_replacements": [  ],
+"next_id": "66",
+"replacements": [  ],
+"text": "Hm... Tidak akan cukup ruang galeri ini...",
+"translation_key": "Hm... Tidak akan cukup ruang galeri ini...",
+"type": "dialogue"
+},
+"66": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "67",
+"replacements": [  ],
+"text": "Permisi, kalau boleh tahu ada kendala apa ya?",
+"translation_key": "Permisi, kalau boleh tahu ada kendala apa ya?",
+"type": "dialogue"
+},
+"67": {
+"character": "Elio",
+"character_replacements": [  ],
+"next_id": "68",
+"replacements": [  ],
+"text": "Ah... saya adalah kurator pameran seni holografik ini. Terlalu banyak seniman hebat yang mengirimkan karya mereka, namun kapasitas ruangan kami tidak mencukupi.",
+"translation_key": "Ah... saya adalah kurator pameran seni holografik ini. Terlalu banyak seniman hebat yang mengirimkan karya mereka, namun kapasitas ruangan kami tidak mencukupi.",
+"type": "dialogue"
+},
+"68": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "69",
+"replacements": [  ],
+"text": "Hmm... berarti harus ada kurasi seleksi untuk karya yang akan dipamerkan ya?",
+"translation_key": "Hmm... berarti harus ada kurasi seleksi untuk karya yang akan dipamerkan ya?",
+"type": "dialogue"
+},
+"69": {
+"character": "Elio",
+"character_replacements": [  ],
+"next_id": "70",
+"replacements": [  ],
+"text": "Tepat sekali. Setiap karya memiliki keunikan tersendiri, membuat saya sulit menentukan pilihan.",
+"translation_key": "Tepat sekali. Setiap karya memiliki keunikan tersendiri, membuat saya sulit menentukan pilihan.",
+"type": "dialogue"
+},
+"7": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "8",
+"replacements": [  ],
+"text": "Baiklah, aku akan membantu mereka yang sedang kesulitan!",
+"translation_key": "Baiklah, aku akan membantu mereka yang sedang kesulitan!",
+"type": "dialogue"
+},
+"70": {
+"next_id": "71",
+"next_id_after": "76",
+"replacements": [  ],
+"responses": PoolStringArray( "70", "73" ),
+"text": "Bagaimana kalau kita menentukan beberapa kriteria terlebih dahulu, seperti kualitas visual, kesesuaian tema, dan teknik pembuatannya?",
+"translation_key": "Bagaimana kalau kita menentukan beberapa kriteria terlebih dahulu, seperti kualitas visual, kesesuaian tema, dan teknik pembuatannya?",
+"type": "response"
+},
+"71": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "T"
+} ] ]
+} ]
+},
+"next_id": "72",
+"parent_id": "70",
+"type": "mutation"
+},
+"72": {
+"character": "Elio",
+"character_replacements": [  ],
+"next_id": "76",
+"parent_id": "70",
+"replacements": [  ],
+"text": "Pendekatan yang baik. Menilai dengan kriteria yang konsisten, mutu visual, dan standar yang sistematis. Terima kasih.",
+"translation_key": "Pendekatan yang baik. Menilai dengan kriteria yang konsisten, mutu visual, dan standar yang sistematis. Terima kasih.",
+"type": "dialogue"
+},
+"73": {
+"next_id": "74",
+"next_id_after": "76",
+"replacements": [  ],
+"text": "Bagaimana kalau kita mendengarkan cerita dan latar belakang dari para senimannya terlebih dahulu?",
+"translation_key": "Bagaimana kalau kita mendengarkan cerita dan latar belakang dari para senimannya terlebih dahulu?",
+"type": "response"
+},
+"74": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "F"
+} ] ]
+} ]
+},
+"next_id": "75",
+"parent_id": "73",
+"type": "mutation"
+},
+"75": {
+"character": "Elio",
+"character_replacements": [  ],
+"next_id": "76",
+"parent_id": "73",
+"replacements": [  ],
+"text": "Pendekatan yang menyentuh. Menilai dari nilai personal, ekspresi emosional, dan kedalaman makna di balik setiap karya. Terima kasih.",
+"translation_key": "Pendekatan yang menyentuh. Menilai dari nilai personal, ekspresi emosional, dan kedalaman makna di balik setiap karya. Terima kasih.",
+"type": "dialogue"
+},
+"76": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "77",
+"replacements": [  ],
+"text": "Mereka pun menyeleksi karya-karya seni tersebut dengan penuh seksama.",
+"translation_key": "Mereka pun menyeleksi karya-karya seni tersebut dengan penuh seksama.",
+"type": "dialogue"
+},
+"77": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "elio"
+} ] ]
+} ]
+},
+"next_id": "78",
+"type": "mutation"
+},
+"78": {
+"next_id": "end",
+"type": "goto"
+},
+"8": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "9",
+"replacements": [  ],
+"text": "Aku akan menunggumu di akhir cerita dunia ini.",
+"translation_key": "Aku akan menunggumu di akhir cerita dunia ini.",
+"type": "dialogue"
+},
+"80": {
+"next_id": "81",
+"text": "panggil_mc_future",
+"type": "title"
+},
+"81": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "82",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Hai {{player_name}}, kemarilah!",
+"translation_key": "Hai {{player_name}}, kemarilah!",
+"type": "dialogue"
+},
+"82": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "83",
+"replacements": [  ],
+"text": "Eh, Gatekeeper sudah menunggu di gerbang. Ayo kita temui dia!",
+"translation_key": "Eh, Gatekeeper sudah menunggu di gerbang. Ayo kita temui dia!",
+"type": "dialogue"
+},
+"83": {
+"next_id": "end",
+"type": "goto"
+},
+"85": {
+"next_id": "86",
+"text": "epilogue_future",
+"type": "title"
+},
+"86": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "quest_selesai"
+}, {
+"type": "comparison",
+"value": "<"
+}, {
+"type": "number",
+"value": 3
+} ]
+},
+"next_conditional_id": "90",
+"next_id": "87",
+"next_id_after": "90",
+"type": "condition"
+},
+"87": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "88",
+"parent_id": "86",
+"replacements": [  ],
+"text": "Masih ada orang di kota ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"translation_key": "Masih ada orang di kota ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"type": "dialogue"
+},
+"88": {
+"next_id": "end",
+"parent_id": "86",
+"type": "goto"
+},
+"9": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "10",
+"replacements": [  ],
+"text": "*sigh~ Kebiasaan deh main ngilang... ya udah yuk kita cari orangnya!",
+"translation_key": "*sigh~ Kebiasaan deh main ngilang... ya udah yuk kita cari orangnya!",
+"type": "dialogue"
+},
+"90": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "91",
+"replacements": [  ],
+"text": "Woah! Kepalaku mulai pusing dengan semua gemerlap cahaya ini...",
+"translation_key": "Woah! Kepalaku mulai pusing dengan semua gemerlap cahaya ini...",
+"type": "dialogue"
+},
+"91": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "92",
+"replacements": [  ],
+"text": "Iya nih, siapa sih yang punya ide membuat tempat yang begitu terang benderang begini?!",
+"translation_key": "Iya nih, siapa sih yang punya ide membuat tempat yang begitu terang benderang begini?!",
+"type": "dialogue"
+},
+"92": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "93",
+"replacements": [  ],
+"text": "Dunia ini memang didesain untuk beraktivitas sepanjang hari tanpa pernah padam.",
+"translation_key": "Dunia ini memang didesain untuk beraktivitas sepanjang hari tanpa pernah padam.",
+"type": "dialogue"
+},
+"93": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "94",
+"replacements": [  ],
+"text": "Jadi ga ada istirahatnya sama sekali? Sebaiknya kita cepat-cepat pergi dari sini yuk!",
+"translation_key": "Jadi ga ada istirahatnya sama sekali? Sebaiknya kita cepat-cepat pergi dari sini yuk!",
+"type": "dialogue"
+},
+"94": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "95",
+"replacements": [  ],
+"text": "Jadi kemana tujuan selanjutnya kita?",
+"translation_key": "Jadi kemana tujuan selanjutnya kita?",
+"type": "dialogue"
+},
+"95": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "96",
+"replacements": [  ],
+"text": "Mari ikuti aku, kita akan menuju dunia selanjutnya.",
+"translation_key": "Mari ikuti aku, kita akan menuju dunia selanjutnya.",
+"type": "dialogue"
+},
+"96": {
+"mutation": {
+"expression": [ {
+"function": "pindah_zona_acak",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "97",
+"type": "mutation"
+},
+"97": {
+"next_id": "end",
+"type": "goto"
+}
+}

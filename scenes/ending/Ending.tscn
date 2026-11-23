@@ -1,0 +1,432 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/ending/Ending.gd" type="Script" id=1]
+[ext_resource path="res://scripts/void_stars.shader" type="Shader" id=2]
+[ext_resource path="res://aset/p_front.png" type="Texture" id=3]
+[ext_resource path="res://aset/g_front.png" type="Texture" id=4]
+[ext_resource path="res://aset/gatekeeper.png" type="Texture" id=5]
+[ext_resource path="res://addons/dialogue_manager/example_balloon/Open_Sans/OpenSans-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://addons/dialogue_manager/example_balloon/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scripts/radial_flash.shader" type="Shader" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/bg_color = Color( 0.00784314, 0.00784314, 0.0156863, 1 )
+shader_param/star_color_1 = Color( 1, 1, 1, 1 )
+shader_param/star_color_2 = Color( 0.65, 0.85, 1, 1 )
+shader_param/star_color_3 = Color( 1, 0.92, 0.7, 1 )
+shader_param/speed = 1.0
+shader_param/density = 42.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 54
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 26
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 8 )
+shader_param/softness = 0.18
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+
+[node name="Ending" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.00784314, 0.00784314, 0.0156863, 1 )
+
+[node name="CharacterLayer" type="Node2D" parent="."]
+
+[node name="Guide" type="Sprite" parent="CharacterLayer"]
+position = Vector2( 304, 228 )
+scale = Vector2( 0.576578, 0.576578 )
+texture = ExtResource( 4 )
+
+[node name="Gatekeeper" type="Sprite" parent="CharacterLayer"]
+position = Vector2( 984, 286 )
+scale = Vector2( 0.830731, 0.830731 )
+texture = ExtResource( 5 )
+
+[node name="Player" type="Sprite" parent="CharacterLayer"]
+position = Vector2( 625, 407 )
+scale = Vector2( 0.917511, 0.917511 )
+texture = ExtResource( 3 )
+
+[node name="PersonalityLayer" type="CanvasLayer" parent="."]
+layer = 40
+
+[node name="ClickDetector" type="Button" parent="PersonalityLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="PersonalityPanel" type="Control" parent="PersonalityLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="DarkOverlay" type="ColorRect" parent="PersonalityLayer/PersonalityPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.00784314, 0.00784314, 0.0156863, 0.95 )
+
+[node name="TitleLabel" type="Label" parent="PersonalityLayer/PersonalityPanel"]
+margin_left = 100.0
+margin_top = 40.0
+margin_right = 900.0
+margin_bottom = 115.0
+custom_colors/font_color = Color( 0.95, 0.95, 0.95, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "YOUR PERSONALITY"
+valign = 1
+
+[node name="MainHBox" type="HBoxContainer" parent="PersonalityLayer/PersonalityPanel"]
+margin_left = 100.0
+margin_top = 135.0
+margin_right = 1180.0
+margin_bottom = 630.0
+mouse_filter = 2
+custom_constants/separation = 55
+
+[node name="LeftCol" type="VBoxContainer" parent="PersonalityLayer/PersonalityPanel/MainHBox"]
+margin_right = 320.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 320, 0 )
+custom_constants/separation = 12
+
+[node name="Frame" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/LeftCol"]
+margin_right = 320.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 320, 340 )
+color = Color( 0.08, 0.1, 0.14, 0.95 )
+
+[node name="CharTexture" type="TextureRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/LeftCol/Frame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+expand = true
+stretch_mode = 6
+
+[node name="ClassLabel" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/LeftCol"]
+margin_top = 352.0
+margin_right = 320.0
+margin_bottom = 388.0
+custom_colors/font_color = Color( 0.95, 0.2, 0.2, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Class Leader"
+
+[node name="RoleCodeLabel" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/LeftCol"]
+margin_top = 400.0
+margin_right = 320.0
+margin_bottom = 436.0
+custom_colors/font_color = Color( 0.95, 0.95, 0.95, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Inspector : ISTJ"
+
+[node name="RightCol" type="VBoxContainer" parent="PersonalityLayer/PersonalityPanel/MainHBox"]
+margin_left = 375.0
+margin_right = 1080.0
+margin_bottom = 788.0
+size_flags_horizontal = 3
+custom_constants/separation = 28
+
+[node name="VBoxStats" type="VBoxContainer" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol"]
+margin_right = 705.0
+margin_bottom = 216.0
+custom_constants/separation = 16
+
+[node name="BarEI" type="Control" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats"]
+margin_right = 705.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 42 )
+
+[node name="ProgressBar" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarEI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.16, 0.18, 0.24, 0.95 )
+
+[node name="FillRect" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarEI/ProgressBar"]
+anchor_bottom = 1.0
+margin_right = 350.0
+color = Color( 0.15, 0.75, 0.38, 1 )
+
+[node name="LabelKiri" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarEI"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -14.0
+margin_right = 200.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "INTROVERT"
+valign = 1
+
+[node name="LabelSkor" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarEI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -14.0
+margin_right = 60.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "2 / 1"
+align = 1
+valign = 1
+
+[node name="LabelKanan" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarEI"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -216.0
+margin_top = -14.0
+margin_right = -16.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "EXTROVERT"
+align = 2
+valign = 1
+
+[node name="BarSN" type="Control" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats"]
+margin_top = 58.0
+margin_right = 705.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 42 )
+
+[node name="ProgressBar" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarSN"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.16, 0.18, 0.24, 0.95 )
+
+[node name="FillRect" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarSN/ProgressBar"]
+anchor_bottom = 1.0
+margin_right = 350.0
+color = Color( 0, 0.72, 0.82, 1 )
+
+[node name="LabelKiri" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarSN"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -14.0
+margin_right = 200.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "SENSOR"
+valign = 1
+
+[node name="LabelSkor" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarSN"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -14.0
+margin_right = 60.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "2 / 0"
+align = 1
+valign = 1
+
+[node name="LabelKanan" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarSN"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -216.0
+margin_top = -14.0
+margin_right = -16.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "INTUITIVES"
+align = 2
+valign = 1
+
+[node name="BarTF" type="Control" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats"]
+margin_top = 116.0
+margin_right = 705.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 42 )
+
+[node name="ProgressBar" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarTF"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.16, 0.18, 0.24, 0.95 )
+
+[node name="FillRect" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarTF/ProgressBar"]
+anchor_bottom = 1.0
+margin_right = 350.0
+color = Color( 0.62, 0.28, 0.78, 1 )
+
+[node name="LabelKiri" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarTF"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -14.0
+margin_right = 200.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "THINKERS"
+valign = 1
+
+[node name="LabelSkor" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarTF"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -14.0
+margin_right = 60.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "3 / 0"
+align = 1
+valign = 1
+
+[node name="LabelKanan" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarTF"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -216.0
+margin_top = -14.0
+margin_right = -16.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "FEELERS"
+align = 2
+valign = 1
+
+[node name="BarJP" type="Control" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats"]
+margin_top = 174.0
+margin_right = 705.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 42 )
+
+[node name="ProgressBar" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarJP"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.16, 0.18, 0.24, 0.95 )
+
+[node name="FillRect" type="ColorRect" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarJP/ProgressBar"]
+anchor_bottom = 1.0
+margin_right = 350.0
+color = Color( 0.85, 0.42, 0.18, 1 )
+
+[node name="LabelKiri" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarJP"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -14.0
+margin_right = 200.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "JUDGERS"
+valign = 1
+
+[node name="LabelSkor" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarJP"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -14.0
+margin_right = 60.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "2 / 1"
+align = 1
+valign = 1
+
+[node name="LabelKanan" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol/VBoxStats/BarJP"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -216.0
+margin_top = -14.0
+margin_right = -16.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "PERCEIVERS"
+align = 2
+valign = 1
+
+[node name="DescLabel" type="Label" parent="PersonalityLayer/PersonalityPanel/MainHBox/RightCol"]
+margin_top = 244.0
+margin_right = 705.0
+margin_bottom = 299.0
+custom_colors/font_color = Color( 0.88, 0.92, 0.96, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "The inspector adalah penyelenggara yang bertanggung jawab, yang terdorong untuk menciptakan dan menegakkan ketertiban di dalam sistem dan institusi."
+autowrap = true
+
+[node name="ClosePrompt" type="Label" parent="PersonalityLayer/PersonalityPanel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -48.0
+margin_right = 250.0
+margin_bottom = -20.0
+custom_colors/font_color = Color( 1, 0.86, 0.28, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "[ Tekan di mana pun untuk melanjutkan ]"
+align = 1
+valign = 1
+
+[node name="FlashbangLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="FlashbangDot" type="ColorRect" parent="FlashbangLayer"]
+visible = false
+material = SubResource( 6 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 15, 15 )
+
+[node name="FlashbangRect" type="ColorRect" parent="FlashbangLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Tween" type="Tween" parent="."]

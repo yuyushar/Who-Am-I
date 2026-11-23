@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/world4_music.ogg-e11482932c2288c0da668f8950bec53a.oggstr"
+
+[deps]
+
+source_file="res://aset/Music/world4_music.ogg"
+dest_files=[ "res://.import/world4_music.ogg-e11482932c2288c0da668f8950bec53a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,474 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/ui/GuideModal.gd" type="Script" id=1]
+[ext_resource path="res://addons/dialogue_manager/example_balloon/Open_Sans/OpenSans-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://addons/dialogue_manager/example_balloon/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/ui/MenuWaveButton.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ui/StaminaRingPreview.gd" type="Script" id=5]
+[ext_resource path="res://scenes/ui/MouseClickIcon.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0156863, 0.0235294, 0.0392157, 0.960784 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.22, 0.5, 0.82, 0.65 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color( 0, 0, 0, 0.8 )
+shadow_size = 28
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 15
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.1, 0.13, 0.18, 0.95 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color( 0.35, 0.48, 0.65, 0.9 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="DynamicFont" id=5]
+size = 13
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[node name="GuideModal" type="CanvasLayer"]
+pause_mode = 2
+layer = 135
+script = ExtResource( 1 )
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.78 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+margin_left = 240.0
+margin_top = 80.0
+margin_right = 1040.0
+margin_bottom = 640.0
+rect_min_size = Vector2( 800, 560 )
+rect_pivot_offset = Vector2( 400, 280 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = 24.0
+margin_right = -36.0
+margin_bottom = -24.0
+custom_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+margin_right = 728.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.45, 0.85, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "[ PETUNJUK KONTROL & CARA MAIN ]"
+align = 1
+valign = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 47.0
+margin_right = 728.0
+margin_bottom = 67.0
+custom_colors/font_color = Color( 0.65, 0.72, 0.82, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Gunakan tombol keyboard berikut untuk menjelajahi dunia dan berinteraksi"
+align = 1
+valign = 1
+
+[node name="ContentGrid" type="GridContainer" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 83.0
+margin_right = 728.0
+margin_bottom = 448.0
+size_flags_vertical = 3
+custom_constants/vseparation = 16
+custom_constants/hseparation = 24
+columns = 2
+
+[node name="MovementCard" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid"]
+margin_right = 352.0
+margin_bottom = 175.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 345.0
+margin_bottom = 168.0
+custom_constants/separation = 8
+
+[node name="SectionTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox"]
+margin_right = 338.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.25, 0.85, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "GERAKAN KARAKTER"
+
+[node name="KeysContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox"]
+margin_top = 30.0
+margin_right = 338.0
+margin_bottom = 66.0
+custom_constants/separation = 6
+
+[node name="KeyW" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer"]
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer/KeyW"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 34.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "W"
+align = 1
+
+[node name="KeyA" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer"]
+margin_left = 42.0
+margin_right = 78.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer/KeyA"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 34.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "A"
+align = 1
+
+[node name="KeyS" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer"]
+margin_left = 84.0
+margin_right = 120.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer/KeyS"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 34.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "S"
+align = 1
+
+[node name="KeyD" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer"]
+margin_left = 126.0
+margin_right = 162.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox/KeysContainer/KeyD"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 34.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "D"
+align = 1
+
+[node name="Desc" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/MovementCard/VBox"]
+margin_top = 74.0
+margin_right = 338.0
+margin_bottom = 113.0
+custom_colors/font_color = Color( 0.85, 0.88, 0.94, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Gunakan tombol W, A, S, D atau tombol panah arah untuk melangkahkan karakter mengitari dunia."
+autowrap = true
+
+[node name="InteractCard" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid"]
+margin_left = 376.0
+margin_right = 728.0
+margin_bottom = 175.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 345.0
+margin_bottom = 168.0
+custom_constants/separation = 8
+
+[node name="SectionTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox"]
+margin_right = 338.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.25, 0.85, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "INTERAKSI & BICARA"
+
+[node name="KeysContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox"]
+margin_top = 30.0
+margin_right = 338.0
+margin_bottom = 70.0
+custom_constants/separation = 8
+
+[node name="KeyF" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer"]
+margin_right = 44.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 44, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer/KeyF"]
+margin_left = 2.0
+margin_top = 8.0
+margin_right = 42.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
+text = "F"
+align = 1
+
+[node name="KeySpace" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer"]
+margin_left = 52.0
+margin_right = 120.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 68, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer/KeySpace"]
+margin_left = 2.0
+margin_top = 8.0
+margin_right = 66.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
+text = "SPACE"
+align = 1
+
+[node name="KeyClick" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer"]
+margin_left = 128.0
+margin_right = 252.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 124, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer/KeyClick"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 122.0
+margin_bottom = 36.0
+custom_constants/separation = 6
+alignment = 1
+
+[node name="MouseIcon" type="Control" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer/KeyClick/HBox"]
+margin_left = 10.0
+margin_right = 36.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 26, 34 )
+size_flags_vertical = 4
+script = ExtResource( 6 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox/KeysContainer/KeyClick/HBox"]
+margin_left = 42.0
+margin_top = 6.0
+margin_right = 109.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "KLIK KIRI"
+align = 1
+
+[node name="Desc" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/InteractCard/VBox"]
+margin_top = 78.0
+margin_right = 338.0
+margin_bottom = 138.0
+custom_colors/font_color = Color( 0.85, 0.88, 0.94, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Dekati NPC, lalu tekan tombol Interaksinya. Selama dialog, kamu bisa spam Klik Kiri, Spasi, atau F untuk mempercepat dan melanjutkan percakapan."
+autowrap = true
+
+[node name="SprintCard" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid"]
+margin_top = 191.0
+margin_right = 352.0
+margin_bottom = 365.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 345.0
+margin_bottom = 167.0
+custom_constants/separation = 8
+
+[node name="SectionTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox"]
+margin_right = 338.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.25, 0.85, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "LARI (SPRINT) & STAMINA"
+
+[node name="Row" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox"]
+margin_top = 30.0
+margin_right = 338.0
+margin_bottom = 84.0
+custom_constants/separation = 16
+
+[node name="KeyShift" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox/Row"]
+margin_top = 9.0
+margin_right = 68.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 68, 36 )
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox/Row/KeyShift"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 66.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "SHIFT"
+align = 1
+
+[node name="RingPreview" type="Control" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox/Row"]
+margin_left = 84.0
+margin_right = 138.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+script = ExtResource( 5 )
+
+[node name="RingLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox/Row"]
+margin_left = 154.0
+margin_top = 18.0
+margin_right = 338.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.35, 1, 0.65, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "<< Lingkaran Stamina"
+
+[node name="Desc" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/SprintCard/VBox"]
+margin_top = 92.0
+margin_right = 338.0
+margin_bottom = 152.0
+custom_colors/font_color = Color( 0.85, 0.88, 0.94, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Tahan tombol Shift sambil bergerak untuk berlari lebih cepat. Bar stamina di atas kepala akan berkurang dan mengisi otomatis saat santai."
+autowrap = true
+
+[node name="PauseCard" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid"]
+margin_left = 376.0
+margin_top = 191.0
+margin_right = 728.0
+margin_bottom = 365.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/PauseCard"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 345.0
+margin_bottom = 167.0
+custom_constants/separation = 8
+
+[node name="SectionTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/PauseCard/VBox"]
+margin_right = 338.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.25, 0.85, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "MENU JEDA & SIMPAN"
+
+[node name="KeysContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/PauseCard/VBox"]
+margin_top = 30.0
+margin_right = 338.0
+margin_bottom = 66.0
+custom_constants/separation = 8
+
+[node name="KeyEsc" type="PanelContainer" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/PauseCard/VBox/KeysContainer"]
+margin_right = 52.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 52, 36 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="Lbl" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/PauseCard/VBox/KeysContainer/KeyEsc"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 50.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "ESC"
+align = 1
+
+[node name="Desc" type="Label" parent="CenterContainer/Panel/VBoxContainer/ContentGrid/PauseCard/VBox"]
+margin_top = 74.0
+margin_right = 338.0
+margin_bottom = 155.0
+custom_colors/font_color = Color( 0.85, 0.88, 0.94, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Tekan tombol ESC kapan saja saat berada di dunia untuk membuka Pause Menu. Kamu bisa menyimpan petualangan (Store & Terminate) atau kembali melanjutkan."
+autowrap = true
+
+[node name="BottomContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 464.0
+margin_right = 728.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 0, 48 )
+alignment = 1
+
+[node name="BtnTutup" type="Button" parent="CenterContainer/Panel/VBoxContainer/BottomContainer"]
+pause_mode = 2
+margin_left = 224.0
+margin_right = 504.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 280, 48 )
+focus_mode = 0
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+flat = true
+script = ExtResource( 4 )
+display_text = "> Mengerti (Tutup)"
+text_color_normal = Color( 0.25, 0.92, 0.55, 1 )
+text_color_hover = Color( 0.55, 1, 0.75, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+pause_mode = 2

@@ -1,0 +1,914 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 13
+syntax_version = 2
+raw_text = "~ prologue_modern
+if zona_ke == 1
+	Guide: Hmm? Aroma dedaunan berpadu dengan deru kendaraan di kejauhan... Ini sebuah taman kota modern!
+	Player: Taman kota yang modern ya... Rasanya tidak asing, tapi juga terasa baru bagiku.
+	Gatekeeper: Selamat datang di langkah pertamamu. Dunia ini mungkin terasa lebih dekat dengan ingatan manusiawimu.
+	Gatekeeper: Di balik tenangnya taman ini, ada orang-orang yang sedang bimbang dan mencari jalan keluar.
+	Guide: Betul banget! Sebagai langkah awalmu mencari ingatan, kamu harus berkeliling dan menyapa orang-orang di sekitar taman ini.
+	Guide: Bicaralah pada mereka dan bantu selesaikan kebingungan mereka dengan sudut pandangmu!
+	Player: Jadi dengan membantu mereka, aku bisa memahami siapa diriku?
+	Gatekeeper: Tepat sekali. Setiap pertimbangan yang kau berikan adalah cerminan caramu memandang kenyataan.
+	Gatekeeper: Temuilah orang-orang itu. Aku akan menunggumu di ujung taman ini saat kau selesai membantu mereka.
+	Guide: *sigh~ Penjaga gerbang ini selalu saja pergi begitu saja... Tapi tenang, ada aku! Yuk {{player_name}}, kita jelajahi taman ini!
+else
+	Guide: Akhirnya sampai juga! Wah, tamannya rindang dan modern sekali ya!
+	Gatekeeper: Suasana di sini mungkin terasa lebih santai setelah petualanganmu di dunia sebelumnya.
+	Player: Rasanya menyegarkan bisa menghirup udara taman ini.
+	Guide: Nah, seperti biasa, ada beberapa orang di sekitar taman yang butuh bantuan dan saran darimu nih!
+	Gatekeeper: Bantulah mereka dengan caramu. Aku akan menunggumu di ujung taman saat semua urusanmu di sini selesai.
+	Guide: Oke deh, Gatekeeper! Ayo {{player_name}}, kita cari orang-orang yang butuh bantuan!
+=> END
+
+~ npc_zana
+if zana_selesai
+	Zana: Terima kasih atas bantuanmu tadi ya, {{player_name}}!
+	=> END
+
+Zana: Hmmm jalan lain kemana ya?...
+Zana: Uhhh... permisi, boleh tanya dikit engga?
+Player: Oh... iya boleh, ada apa?
+Zana: Gini, aku mau ke danau taman tapi jalan biasanya rusak, tau jalan lain ga?
+- Bagaimana kalo kita cek denahnya aja, kan semua dah tertera disana
+	do tambah_poin(\"S\")
+	do cutscene_zana_denah()
+	Zana: Ah! Benar juga ya, okok ayo cari di denahnya
+- Kalo liat dari sini, kayaknya kita bisa cari jalan lain dekat sini sih
+	do tambah_poin(\"N\")
+	do cutscene_zana_jembatan()
+	Zana: Okelah ayo cari jalannya, harusnya ga sejauh itu
+Guide: Mereka pun mencari jalan menuju danau
+do selesaikan_npc(\"zana\")
+=> END
+
+~ npc_moxie
+if moxie_selesai
+	Moxie: Terima kasih banyak sudah membantuku tadi, {{player_name}}!
+	=> END
+
+Moxie: Uhhh... yang ini tadi apa ya...? aaa....
+Player: Permisi ada apa ya mbak, kok bingung gitu
+Moxie: Ah... anu... itu... e... kan a-aku harus mengantarkan minuman ini, t-tapi struknya basah kena embun dari minumannya, j-jadi aku l-lupa yang mana, soalnya mirip-mirip semua...
+Moxie: U-u... Gimana ini... n-nanti aku d-dimarahin manager...
+Player: Hmmm... Dari struknya masih bisa kebaca beberapa isi minumnya...
+- Gimana kalo kita cocokin sama yang masih ada dalam struknya, mungkin masih ada beberapa perbedaan seperti ukuran, jenis, atau toping pada minuman
+	do tambah_poin(\"S\")
+	Moxie: O-okay aku cek satu-satu, semoga a-ada perbedaannya, terima kasih, terima kasih, terima kasih sudah m-membantuku
+- Coba ingat urutan pelanggan yang pesan tadi, terus sesuaikan kombinasi minuman dengan urutan pesanan pelanggan, mungkin kita dapat menemukan pola
+	do tambah_poin(\"N\")
+	Moxie: O-okay aku coba ingat-ingat, semoga aku dapat m-menemukan polanya, terima kasih, terima kasih, terima kasih sudah m-membantuku
+Guide: Mereka pun mengantarkan pesanan ke pelanggan yang benar
+do selesaikan_npc(\"moxie\")
+=> END
+
+~ npc_arif
+if arif_selesai
+	Arif: Terima kasih sarannya ya, {{player_name}}! Pameran fotoku jadi keren sekali!
+	=> END
+
+Arif: Halo, halo mari sini lihat-lihat karya-karya indahku
+Player: Woah! Kau memotret semua ini?
+Arif: heh!, JELASLAH, tapi aku butuh bantuanmu!
+Arif: Aku hebat dalam soal fotografi, namun aku tidak bisa untuk menata semua fotoku dengan baik!, Maukah kau membantuku untuk hal ini...
+Player: Hmm... Penataan memang penting untuk menunjukan karyamu...
+- Hmm mungkin kau bisa mengumpulkan mereka sesuai kategori, mungkin bisa dari warna, tempat atau kegiatannya
+	do tambah_poin(\"S\")
+	Arif: AH BENAR SEKALI!, Penataan yang sangat rapi dan teratur, HEBAT SEKALI, luar biasa idemu kawan!
+- Bagaimana kalau menyusunya seperti ada cerita di dalam foto-foto yang kau tampilkan
+	do tambah_poin(\"N\")
+	Arif: FANTASTIK, sebuah karya harus menunjukan arti yang sebenarnya! LUAR BIASA, tidak terduga juga idemu kawan!
+Guide: Mereka pun menata foto-foto tersebut
+do selesaikan_npc(\"arif\")
+=> END
+
+~ panggil_mc_modern
+Gatekeeper: Hai {{player_name}}, kemarilah!
+Guide: Eh, Gatekeeper sudah menunggu di gerbang. Ayo temui dia!
+=> END
+
+~ epilogue_modern
+if quest_selesai < 3
+	Gatekeeper: Masih ada orang di taman ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!
+	=> END
+
+Player: Okay, aku sudah membantu semua orang disini
+Gatekeeper: Kerja bagus, kau telah menyelesaikan tugasmu di tempat ini.
+Player: Apa artinya itu?
+if sisa_zona <= 0
+	Guide: Karena ini merupakan zona terakhirmu! Kau sudah menuntaskan semua perjalanan di setiap dunia.
+	Gatekeeper: Benar, mari ikut aku ke akhir perjalanan ini. Saatnya kita melihat siapa dirimu yang sesungguhnya.
+else
+	Guide: Artinya tinggal {{sisa_zona}} dunia lagi yang kau harus datangi
+	Gatekeeper: Benar, mari ikut aku ke dunia selanjutnya
+do pindah_zona_acak()
+=> END"
+errors = [  ]
+titles = {
+"epilogue_modern": "76",
+"npc_arif": "51",
+"npc_moxie": "31",
+"npc_zana": "10",
+"panggil_mc_modern": "71",
+"prologue_modern": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "prologue_modern",
+"type": "title"
+},
+"1": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "2",
+"replacements": [  ],
+"text": "Ini taman?",
+"translation_key": "Ini taman?",
+"type": "dialogue"
+},
+"10": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "zana_selesai"
+} ]
+},
+"next_conditional_id": "14",
+"next_id": "11",
+"next_id_after": "14",
+"type": "condition"
+},
+"11": {
+"character": "Zana",
+"character_replacements": [  ],
+"next_id": "12",
+"parent_id": "10",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Terima kasih atas bantuanmu tadi ya, {{player_name}}!",
+"translation_key": "Terima kasih atas bantuanmu tadi ya, {{player_name}}!",
+"type": "dialogue"
+},
+"12": {
+"next_id": "end",
+"parent_id": "10",
+"type": "goto"
+},
+"14": {
+"character": "Zana",
+"character_replacements": [  ],
+"next_id": "15",
+"replacements": [  ],
+"text": "Hmmm jalan lain kemana ya?...",
+"translation_key": "Hmmm jalan lain kemana ya?...",
+"type": "dialogue"
+},
+"15": {
+"character": "Zana",
+"character_replacements": [  ],
+"next_id": "16",
+"replacements": [  ],
+"text": "Uhhh... permisi, boleh tanya dikit engga?",
+"translation_key": "Uhhh... permisi, boleh tanya dikit engga?",
+"type": "dialogue"
+},
+"16": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "17",
+"replacements": [  ],
+"text": "Oh... iya boleh, ada apa?",
+"translation_key": "Oh... iya boleh, ada apa?",
+"type": "dialogue"
+},
+"17": {
+"character": "Zana",
+"character_replacements": [  ],
+"next_id": "18",
+"replacements": [  ],
+"text": "Gini, aku mau ke danau taman tapi jalan biasanya rusak, tau jalan lain ga?",
+"translation_key": "Gini, aku mau ke danau taman tapi jalan biasanya rusak, tau jalan lain ga?",
+"type": "dialogue"
+},
+"18": {
+"next_id": "19",
+"next_id_after": "26",
+"replacements": [  ],
+"responses": PoolStringArray( "18", "22" ),
+"text": "Bagaimana kalo kita cek denahnya aja, kan semua dah tertera disana",
+"translation_key": "Bagaimana kalo kita cek denahnya aja, kan semua dah tertera disana",
+"type": "response"
+},
+"19": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "S"
+} ] ]
+} ]
+},
+"next_id": "20",
+"parent_id": "18",
+"type": "mutation"
+},
+"2": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "Iya, kau mungkin lebih familiar dengan suasana dunia ini",
+"translation_key": "Iya, kau mungkin lebih familiar dengan suasana dunia ini",
+"type": "dialogue"
+},
+"20": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_zana_denah",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "21",
+"parent_id": "18",
+"type": "mutation"
+},
+"21": {
+"character": "Zana",
+"character_replacements": [  ],
+"next_id": "26",
+"parent_id": "18",
+"replacements": [  ],
+"text": "Ah! Benar juga ya, okok ayo cari di denahnya",
+"translation_key": "Ah! Benar juga ya, okok ayo cari di denahnya",
+"type": "dialogue"
+},
+"22": {
+"next_id": "23",
+"next_id_after": "26",
+"replacements": [  ],
+"text": "Kalo liat dari sini, kayaknya kita bisa cari jalan lain dekat sini sih",
+"translation_key": "Kalo liat dari sini, kayaknya kita bisa cari jalan lain dekat sini sih",
+"type": "response"
+},
+"23": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "N"
+} ] ]
+} ]
+},
+"next_id": "24",
+"parent_id": "22",
+"type": "mutation"
+},
+"24": {
+"mutation": {
+"expression": [ {
+"function": "cutscene_zana_jembatan",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "25",
+"parent_id": "22",
+"type": "mutation"
+},
+"25": {
+"character": "Zana",
+"character_replacements": [  ],
+"next_id": "26",
+"parent_id": "22",
+"replacements": [  ],
+"text": "Okelah ayo cari jalannya, harusnya ga sejauh itu",
+"translation_key": "Okelah ayo cari jalannya, harusnya ga sejauh itu",
+"type": "dialogue"
+},
+"26": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "27",
+"replacements": [  ],
+"text": "Mereka pun mencari jalan menuju danau",
+"translation_key": "Mereka pun mencari jalan menuju danau",
+"type": "dialogue"
+},
+"27": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "zana"
+} ] ]
+} ]
+},
+"next_id": "28",
+"type": "mutation"
+},
+"28": {
+"next_id": "end",
+"type": "goto"
+},
+"3": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "4",
+"replacements": [  ],
+"text": "hmmm iya juga",
+"translation_key": "hmmm iya juga",
+"type": "dialogue"
+},
+"30": {
+"next_id": "31",
+"text": "npc_moxie",
+"type": "title"
+},
+"31": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "moxie_selesai"
+} ]
+},
+"next_conditional_id": "35",
+"next_id": "32",
+"next_id_after": "35",
+"type": "condition"
+},
+"32": {
+"character": "Moxie",
+"character_replacements": [  ],
+"next_id": "33",
+"parent_id": "31",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Terima kasih banyak sudah membantuku tadi, {{player_name}}!",
+"translation_key": "Terima kasih banyak sudah membantuku tadi, {{player_name}}!",
+"type": "dialogue"
+},
+"33": {
+"next_id": "end",
+"parent_id": "31",
+"type": "goto"
+},
+"35": {
+"character": "Moxie",
+"character_replacements": [  ],
+"next_id": "36",
+"replacements": [  ],
+"text": "Uhhh... yang ini tadi apa ya...? aaa....",
+"translation_key": "Uhhh... yang ini tadi apa ya...? aaa....",
+"type": "dialogue"
+},
+"36": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "37",
+"replacements": [  ],
+"text": "Permisi ada apa ya mbak, kok bingung gitu",
+"translation_key": "Permisi ada apa ya mbak, kok bingung gitu",
+"type": "dialogue"
+},
+"37": {
+"character": "Moxie",
+"character_replacements": [  ],
+"next_id": "38",
+"replacements": [  ],
+"text": "Ah... anu... itu... e... kan a-aku harus mengantarkan minuman ini, t-tapi struknya basah kena embun dari minumannya, j-jadi aku l-lupa yang mana, soalnya mirip-mirip semua...",
+"translation_key": "Ah... anu... itu... e... kan a-aku harus mengantarkan minuman ini, t-tapi struknya basah kena embun dari minumannya, j-jadi aku l-lupa yang mana, soalnya mirip-mirip semua...",
+"type": "dialogue"
+},
+"38": {
+"character": "Moxie",
+"character_replacements": [  ],
+"next_id": "39",
+"replacements": [  ],
+"text": "U-u... Gimana ini... n-nanti aku d-dimarahin manager...",
+"translation_key": "U-u... Gimana ini... n-nanti aku d-dimarahin manager...",
+"type": "dialogue"
+},
+"39": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "40",
+"replacements": [  ],
+"text": "Hmmm... Dari struknya masih bisa kebaca beberapa isi minumnya...",
+"translation_key": "Hmmm... Dari struknya masih bisa kebaca beberapa isi minumnya...",
+"type": "dialogue"
+},
+"4": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Seperti biasa ya... kau harus membantu orang-orang disini",
+"translation_key": "Seperti biasa ya... kau harus membantu orang-orang disini",
+"type": "dialogue"
+},
+"40": {
+"next_id": "41",
+"next_id_after": "46",
+"replacements": [  ],
+"responses": PoolStringArray( "40", "43" ),
+"text": "Gimana kalo kita cocokin sama yang masih ada dalam struknya, mungkin masih ada beberapa perbedaan seperti ukuran, jenis, atau toping pada minuman",
+"translation_key": "Gimana kalo kita cocokin sama yang masih ada dalam struknya, mungkin masih ada beberapa perbedaan seperti ukuran, jenis, atau toping pada minuman",
+"type": "response"
+},
+"41": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "S"
+} ] ]
+} ]
+},
+"next_id": "42",
+"parent_id": "40",
+"type": "mutation"
+},
+"42": {
+"character": "Moxie",
+"character_replacements": [  ],
+"next_id": "46",
+"parent_id": "40",
+"replacements": [  ],
+"text": "O-okay aku cek satu-satu, semoga a-ada perbedaannya, terima kasih, terima kasih, terima kasih sudah m-membantuku",
+"translation_key": "O-okay aku cek satu-satu, semoga a-ada perbedaannya, terima kasih, terima kasih, terima kasih sudah m-membantuku",
+"type": "dialogue"
+},
+"43": {
+"next_id": "44",
+"next_id_after": "46",
+"replacements": [  ],
+"text": "Coba ingat urutan pelanggan yang pesan tadi, terus sesuaikan kombinasi minuman dengan urutan pesanan pelanggan, mungkin kita dapat menemukan pola",
+"translation_key": "Coba ingat urutan pelanggan yang pesan tadi, terus sesuaikan kombinasi minuman dengan urutan pesanan pelanggan, mungkin kita dapat menemukan pola",
+"type": "response"
+},
+"44": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "N"
+} ] ]
+} ]
+},
+"next_id": "45",
+"parent_id": "43",
+"type": "mutation"
+},
+"45": {
+"character": "Moxie",
+"character_replacements": [  ],
+"next_id": "46",
+"parent_id": "43",
+"replacements": [  ],
+"text": "O-okay aku coba ingat-ingat, semoga aku dapat m-menemukan polanya, terima kasih, terima kasih, terima kasih sudah m-membantuku",
+"translation_key": "O-okay aku coba ingat-ingat, semoga aku dapat m-menemukan polanya, terima kasih, terima kasih, terima kasih sudah m-membantuku",
+"type": "dialogue"
+},
+"46": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "47",
+"replacements": [  ],
+"text": "Mereka pun mengantarkan pesanan ke pelanggan yang benar",
+"translation_key": "Mereka pun mengantarkan pesanan ke pelanggan yang benar",
+"type": "dialogue"
+},
+"47": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "moxie"
+} ] ]
+} ]
+},
+"next_id": "48",
+"type": "mutation"
+},
+"48": {
+"next_id": "end",
+"type": "goto"
+},
+"5": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "6",
+"replacements": [  ],
+"text": "Di Taman ini ada beberapa orang yang bisa kau bantu, aku tunggu di akhir cerita dunia ini",
+"translation_key": "Di Taman ini ada beberapa orang yang bisa kau bantu, aku tunggu di akhir cerita dunia ini",
+"type": "dialogue"
+},
+"50": {
+"next_id": "51",
+"text": "npc_arif",
+"type": "title"
+},
+"51": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "arif_selesai"
+} ]
+},
+"next_conditional_id": "55",
+"next_id": "52",
+"next_id_after": "55",
+"type": "condition"
+},
+"52": {
+"character": "Arif",
+"character_replacements": [  ],
+"next_id": "53",
+"parent_id": "51",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Terima kasih sarannya ya, {{player_name}}! Pameran fotoku jadi keren sekali!",
+"translation_key": "Terima kasih sarannya ya, {{player_name}}! Pameran fotoku jadi keren sekali!",
+"type": "dialogue"
+},
+"53": {
+"next_id": "end",
+"parent_id": "51",
+"type": "goto"
+},
+"55": {
+"character": "Arif",
+"character_replacements": [  ],
+"next_id": "56",
+"replacements": [  ],
+"text": "Halo, halo mari sini lihat-lihat karya-karya indahku",
+"translation_key": "Halo, halo mari sini lihat-lihat karya-karya indahku",
+"type": "dialogue"
+},
+"56": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "57",
+"replacements": [  ],
+"text": "Woah! Kau memotret semua ini?",
+"translation_key": "Woah! Kau memotret semua ini?",
+"type": "dialogue"
+},
+"57": {
+"character": "Arif",
+"character_replacements": [  ],
+"next_id": "58",
+"replacements": [  ],
+"text": "heh!, JELASLAH, tapi aku butuh bantuanmu!",
+"translation_key": "heh!, JELASLAH, tapi aku butuh bantuanmu!",
+"type": "dialogue"
+},
+"58": {
+"character": "Arif",
+"character_replacements": [  ],
+"next_id": "59",
+"replacements": [  ],
+"text": "Aku hebat dalam soal fotografi, namun aku tidak bisa untuk menata semua fotoku dengan baik!, Maukah kau membantuku untuk hal ini...",
+"translation_key": "Aku hebat dalam soal fotografi, namun aku tidak bisa untuk menata semua fotoku dengan baik!, Maukah kau membantuku untuk hal ini...",
+"type": "dialogue"
+},
+"59": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "60",
+"replacements": [  ],
+"text": "Hmm... Penataan memang penting untuk menunjukan karyamu...",
+"translation_key": "Hmm... Penataan memang penting untuk menunjukan karyamu...",
+"type": "dialogue"
+},
+"6": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "7",
+"replacements": [  ],
+"text": "*sigh~ Kebiasaan... ya udah yuk!",
+"translation_key": "*sigh~ Kebiasaan... ya udah yuk!",
+"type": "dialogue"
+},
+"60": {
+"next_id": "61",
+"next_id_after": "66",
+"replacements": [  ],
+"responses": PoolStringArray( "60", "63" ),
+"text": "Hmm mungkin kau bisa mengumpulkan mereka sesuai kategori, mungkin bisa dari warna, tempat atau kegiatannya",
+"translation_key": "Hmm mungkin kau bisa mengumpulkan mereka sesuai kategori, mungkin bisa dari warna, tempat atau kegiatannya",
+"type": "response"
+},
+"61": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "S"
+} ] ]
+} ]
+},
+"next_id": "62",
+"parent_id": "60",
+"type": "mutation"
+},
+"62": {
+"character": "Arif",
+"character_replacements": [  ],
+"next_id": "66",
+"parent_id": "60",
+"replacements": [  ],
+"text": "AH BENAR SEKALI!, Penataan yang sangat rapi dan teratur, HEBAT SEKALI, luar biasa idemu kawan!",
+"translation_key": "AH BENAR SEKALI!, Penataan yang sangat rapi dan teratur, HEBAT SEKALI, luar biasa idemu kawan!",
+"type": "dialogue"
+},
+"63": {
+"next_id": "64",
+"next_id_after": "66",
+"replacements": [  ],
+"text": "Bagaimana kalau menyusunya seperti ada cerita di dalam foto-foto yang kau tampilkan",
+"translation_key": "Bagaimana kalau menyusunya seperti ada cerita di dalam foto-foto yang kau tampilkan",
+"type": "response"
+},
+"64": {
+"mutation": {
+"expression": [ {
+"function": "tambah_poin",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "N"
+} ] ]
+} ]
+},
+"next_id": "65",
+"parent_id": "63",
+"type": "mutation"
+},
+"65": {
+"character": "Arif",
+"character_replacements": [  ],
+"next_id": "66",
+"parent_id": "63",
+"replacements": [  ],
+"text": "FANTASTIK, sebuah karya harus menunjukan arti yang sebenarnya! LUAR BIASA, tidak terduga juga idemu kawan!",
+"translation_key": "FANTASTIK, sebuah karya harus menunjukan arti yang sebenarnya! LUAR BIASA, tidak terduga juga idemu kawan!",
+"type": "dialogue"
+},
+"66": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "67",
+"replacements": [  ],
+"text": "Mereka pun menata foto-foto tersebut",
+"translation_key": "Mereka pun menata foto-foto tersebut",
+"type": "dialogue"
+},
+"67": {
+"mutation": {
+"expression": [ {
+"function": "selesaikan_npc",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "arif"
+} ] ]
+} ]
+},
+"next_id": "68",
+"type": "mutation"
+},
+"68": {
+"next_id": "end",
+"type": "goto"
+},
+"7": {
+"next_id": "end",
+"type": "goto"
+},
+"70": {
+"next_id": "71",
+"text": "panggil_mc_modern",
+"type": "title"
+},
+"71": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "72",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "player_name"
+} ],
+"value_in_text": "{{player_name}}"
+} ],
+"text": "Hai {{player_name}}, kemarilah!",
+"translation_key": "Hai {{player_name}}, kemarilah!",
+"type": "dialogue"
+},
+"72": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "73",
+"replacements": [  ],
+"text": "Eh, Gatekeeper sudah menunggu di gerbang. Ayo temui dia!",
+"translation_key": "Eh, Gatekeeper sudah menunggu di gerbang. Ayo temui dia!",
+"type": "dialogue"
+},
+"73": {
+"next_id": "end",
+"type": "goto"
+},
+"75": {
+"next_id": "76",
+"text": "epilogue_modern",
+"type": "title"
+},
+"76": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "quest_selesai"
+}, {
+"type": "comparison",
+"value": "<"
+}, {
+"type": "number",
+"value": 3
+} ]
+},
+"next_conditional_id": "80",
+"next_id": "77",
+"next_id_after": "80",
+"type": "condition"
+},
+"77": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "78",
+"parent_id": "76",
+"replacements": [  ],
+"text": "Masih ada orang di taman ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"translation_key": "Masih ada orang di taman ini yang membutuhkan bantuanmu. Bantulah mereka terlebih dahulu!",
+"type": "dialogue"
+},
+"78": {
+"next_id": "end",
+"parent_id": "76",
+"type": "goto"
+},
+"80": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "81",
+"replacements": [  ],
+"text": "Okay, aku sudah membantu semua orang disini",
+"translation_key": "Okay, aku sudah membantu semua orang disini",
+"type": "dialogue"
+},
+"81": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "82",
+"replacements": [  ],
+"text": "Kerja bagus, kau telah menyelesaikan tugasmu di tempat ini.",
+"translation_key": "Kerja bagus, kau telah menyelesaikan tugasmu di tempat ini.",
+"type": "dialogue"
+},
+"82": {
+"character": "Player",
+"character_replacements": [  ],
+"next_id": "83",
+"replacements": [  ],
+"text": "Apa artinya itu?",
+"translation_key": "Apa artinya itu?",
+"type": "dialogue"
+},
+"83": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "sisa_zona"
+}, {
+"type": "comparison",
+"value": "<="
+}, {
+"type": "number",
+"value": 0
+} ]
+},
+"next_conditional_id": "86",
+"next_id": "84",
+"next_id_after": "89",
+"type": "condition"
+},
+"84": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "85",
+"parent_id": "83",
+"replacements": [  ],
+"text": "Karena ini merupakan zona terakhirmu! Kau sudah menuntaskan semua perjalanan di setiap dunia.",
+"translation_key": "Karena ini merupakan zona terakhirmu! Kau sudah menuntaskan semua perjalanan di setiap dunia.",
+"type": "dialogue"
+},
+"85": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "89",
+"parent_id": "83",
+"replacements": [  ],
+"text": "Benar, mari ikut aku ke akhir perjalanan ini. Saatnya kita melihat siapa dirimu yang sesungguhnya.",
+"translation_key": "Benar, mari ikut aku ke akhir perjalanan ini. Saatnya kita melihat siapa dirimu yang sesungguhnya.",
+"type": "dialogue"
+},
+"86": {
+"next_conditional_id": "89",
+"next_id": "87",
+"next_id_after": "89",
+"type": "condition"
+},
+"87": {
+"character": "Guide",
+"character_replacements": [  ],
+"next_id": "88",
+"parent_id": "86",
+"replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "sisa_zona"
+} ],
+"value_in_text": "{{sisa_zona}}"
+} ],
+"text": "Artinya tinggal {{sisa_zona}} dunia lagi yang kau harus datangi",
+"translation_key": "Artinya tinggal {{sisa_zona}} dunia lagi yang kau harus datangi",
+"type": "dialogue"
+},
+"88": {
+"character": "Gatekeeper",
+"character_replacements": [  ],
+"next_id": "89",
+"parent_id": "86",
+"replacements": [  ],
+"text": "Benar, mari ikut aku ke dunia selanjutnya",
+"translation_key": "Benar, mari ikut aku ke dunia selanjutnya",
+"type": "dialogue"
+},
+"89": {
+"mutation": {
+"expression": [ {
+"function": "pindah_zona_acak",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "90",
+"type": "mutation"
+},
+"9": {
+"next_id": "10",
+"text": "npc_zana",
+"type": "title"
+},
+"90": {
+"next_id": "end",
+"type": "goto"
+}
+}

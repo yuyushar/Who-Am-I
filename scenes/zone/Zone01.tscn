@@ -1,0 +1,313 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scenes/character/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Zone01.gd" type="Script" id=2]
+[ext_resource path="res://aset/gatekeeper.png" type="Texture" id=3]
+[ext_resource path="res://scenes/npc/BaseNPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dialogues/village_e_i.tres" type="Resource" id=5]
+[ext_resource path="res://aset/Alun-Alun Desa Fantasi Pedesaan.png" type="Texture" id=6]
+[ext_resource path="res://aset/World 1/World/raka.png" type="Texture" id=7]
+[ext_resource path="res://aset/World 1/World/kalaeva.png" type="Texture" id=8]
+[ext_resource path="res://aset/World 1/World/Annie.png" type="Texture" id=9]
+[ext_resource path="res://aset/World 1/World/board1.png" type="Texture" id=10]
+[ext_resource path="res://aset/World 1/World/flag1.png" type="Texture" id=11]
+[ext_resource path="res://aset/World 1/World/flag2.png" type="Texture" id=12]
+[ext_resource path="res://aset/World 1/World/store1.png" type="Texture" id=13]
+[ext_resource path="res://aset/World 1/World/store2.png" type="Texture" id=14]
+[ext_resource path="res://aset/Music/world1_music.ogg" type="AudioStream" id=15]
+[ext_resource path="res://aset/World 1/World/lamp2.png" type="Texture" id=16]
+[ext_resource path="res://scripts/flag_wind.shader" type="Shader" id=17]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 75.6891, 21.0594 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 16.0
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 17 )
+shader_param/speed = 2.8
+shader_param/amplitude = 2.5
+shader_param/wave_length = 0.04
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 9.67176
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 45.0
+height = 30.0
+
+[node name="Zone01" type="Node2D"]
+position = Vector2( 449, 283 )
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 759, 508 )
+scale = Vector2( 1.59204, 1.59204 )
+z_index = -10
+texture = ExtResource( 6 )
+
+[node name="BatasKamera" type="ReferenceRect" parent="."]
+margin_left = -464.0
+margin_top = -307.0
+margin_right = 1981.0
+margin_bottom = 1324.0
+
+[node name="TembokMap" type="StaticBody2D" parent="."]
+position = Vector2( -456, -275 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TembokMap"]
+visible = false
+build_mode = 1
+polygon = PoolVector2Array( -8, -30, 2435, -33, 2440, 1597, -7, 1598 )
+
+[node name="CollisionPolygonArea" type="CollisionPolygon2D" parent="TembokMap"]
+position = Vector2( 392, 950 )
+build_mode = 1
+polygon = PoolVector2Array( 0, 1, 113, 156, 239, 271, 344, 305, 418, 342, 501, 409, 610, 415, 655, 455, 593, 633, 909, 633, 815, 449, 882, 428, 1107, 417, 1491, 123, 1558, 48, 1604, 123, 1684, 108, 1728, -120, 1632, -283, 1538, -307, 1355, -380, 1361, -460, 1377, -504, 1357, -512, 1299, -592, 1192, -635, 1050, -635, 942, -637, 725, -636, 667, -630, 642, -581, 475, -580, 392, -575, 324, -570, 257, -563, 51, -462, 0, 1 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Store1" type="Sprite" parent="YSort"]
+position = Vector2( 277, 254 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 13 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Store1"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Store1/StaticBody2D"]
+position = Vector2( 0, 35 )
+polygon = PoolVector2Array( -79.7719, 54.8219, -109.294, 31.5813, -108.037, -0.453094, -86.0531, -4.22186, 42.0844, -16.1562, 52.7625, -11.7593, 58.017, -9.29295, 83.5406, 2.68753, 88.5656, 3.94379, 96.7312, 4.5719, 100.5, 5.82816, 102.384, 8.34064, 101.756, 12.1094, 103.641, 15.25, 104.269, 17.1344, 103.012, 19.6469, 103.012, 23.4156, 103.012, 29.0688, 102.384, 34.7219, 99.2437, 38.4907, 93.5906, 40.375, 87.9375, 39.1188, 84.7969, 37.8625, 84.1687, 40.375 )
+
+[node name="Store2" type="Sprite" parent="YSort"]
+position = Vector2( 1148, 254 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 14 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Store2"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Store2/StaticBody2D"]
+position = Vector2( 0, 38 )
+polygon = PoolVector2Array( -78.5156, 37.375, -89.8218, 44.9125, -114.319, 40.5156, -113.691, 36.1187, -121.228, 36.1187, -123.741, 37.375, -131.278, 36.1187, -131.906, 32.35, -130.65, 29.8375, -130.65, 24.8125, -129.394, 22.9281, -130.65, 12.25, -128.766, 9.73749, -128.766, 3.45624, -114.947, -2.19687, -104.269, -1.56876, -104.269, -4.08127, -105.525, -5.33749, -105.525, -10.3625, -104.269, -10.9906, -91.7062, -14.7594, -89.8218, -15.3875, -47.7375, -22.925, 62.1844, -12.2469, 71.6063, -10.3625, 72.8625, -5.33749, 74.1187, -2.82501, 78.5157, -4.08127, 79.7719, -5.33749, 83.5406, -7.22189, 87.3094, -4.08127, 91.0782, -5.33749, 97.3594, -2.82501, 97.9875, -12.2469, 101.756, -17.9, 108.666, -19.7844, 118.716, -20.4125, 124.369, -19.7844, 129.394, -17.9, 132.534, -15.3875, 135.047, -6.59375, 136.303, -0.940643, 135.675, 14.7625, 133.791, 21.6719, 131.278, 31.0938, 123.741, 35.4906, 118.087, 34.8625, 118.716, 43.0281, 85.425, 58.1031, 67.2094, 53.0781, 51.5063, 59.3594, 40.8282, 56.8469, 40.8282, 51.1938, 29.5219, 49.3094, 24.4969, 51.8219, -4.39685, 49.3094, -5.02496, 46.7969 )
+
+[node name="Board" type="Sprite" parent="YSort"]
+position = Vector2( 455, 18 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 10 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Board"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Board/StaticBody2D"]
+position = Vector2( 0.942078, 53.0594 )
+shape = SubResource( 4 )
+
+[node name="FlagTopLeft" type="Sprite" parent="YSort"]
+position = Vector2( 58, 65 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/FlagTopLeft"]
+position = Vector2( -35.175, 6.90938 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FlagTopLeft/StaticBody2D"]
+position = Vector2( 7, 75 )
+shape = SubResource( 5 )
+
+[node name="FlagTopRight" type="Sprite" parent="YSort"]
+position = Vector2( 1312, -67 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/FlagTopRight"]
+position = Vector2( -38.9437, 0.628128 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FlagTopRight/StaticBody2D"]
+position = Vector2( 7, 75 )
+shape = SubResource( 5 )
+
+[node name="FlagBottomLeft" type="Sprite" parent="YSort"]
+position = Vector2( 271, 803 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/FlagBottomLeft"]
+position = Vector2( -35.175, 7.53748 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FlagBottomLeft/StaticBody2D"]
+position = Vector2( 5.02499, 74.7469 )
+scale = Vector2( 1.04769, 1.41227 )
+shape = SubResource( 5 )
+
+[node name="FlagRaka" type="Node2D" parent="YSort"]
+position = Vector2( 1303, 674 )
+scale = Vector2( 1.59204, 1.59204 )
+
+[node name="Pole" type="Sprite" parent="YSort/FlagRaka"]
+texture = ExtResource( 12 )
+
+[node name="Cloth" type="Sprite" parent="YSort/FlagRaka"]
+material = SubResource( 1 )
+texture = ExtResource( 11 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/FlagRaka"]
+position = Vector2( -37.6875, 0.628113 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FlagRaka/StaticBody2D"]
+position = Vector2( 7, 75 )
+shape = SubResource( 5 )
+
+[node name="LampTopLeft" type="Sprite" parent="YSort"]
+position = Vector2( 233, 17 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/LampTopLeft"]
+position = Vector2( -25.125, 5.02499 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/LampTopLeft/StaticBody2D"]
+position = Vector2( 0, 60 )
+shape = SubResource( 6 )
+
+[node name="LampTopRight" type="Sprite" parent="YSort"]
+position = Vector2( 981, -20 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/LampTopRight"]
+position = Vector2( -18.8438, 2.5125 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/LampTopRight/StaticBody2D"]
+position = Vector2( -3.76865, 62.1844 )
+shape = SubResource( 6 )
+
+[node name="LampMidLeft" type="Sprite" parent="YSort"]
+position = Vector2( 56, 623 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/LampMidLeft"]
+position = Vector2( -17.5875, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/LampMidLeft/StaticBody2D"]
+position = Vector2( -3.14063, 60.3 )
+scale = Vector2( 1.33424, 2.21942 )
+shape = SubResource( 6 )
+
+[node name="LampMidRight" type="Sprite" parent="YSort"]
+position = Vector2( 1574, 437 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/LampMidRight"]
+position = Vector2( -15.7031, 0.628113 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/LampMidRight/StaticBody2D"]
+position = Vector2( -6.28125, 59.6719 )
+scale = Vector2( 1.47059, 1.75 )
+shape = SubResource( 6 )
+
+[node name="LampGateLeft" type="Sprite" parent="YSort"]
+position = Vector2( 480, 950 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/LampGateLeft"]
+position = Vector2( -20.7281, -1.25629 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/LampGateLeft/StaticBody2D"]
+position = Vector2( 0, 60 )
+scale = Vector2( 1.39114, 1.44287 )
+shape = SubResource( 6 )
+
+[node name="LampGateRight" type="Sprite" parent="YSort"]
+position = Vector2( 954, 953 )
+scale = Vector2( 1.59204, 1.59204 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/LampGateRight"]
+position = Vector2( -19.4719, 0.628113 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/LampGateRight/StaticBody2D"]
+position = Vector2( 0, 60 )
+shape = SubResource( 6 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 735, 942 )
+scale = Vector2( 0.371951, 0.371951 )
+
+[node name="NPC1" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 1231, 748 )
+scale = Vector2( 0.42, 0.42 )
+dialogue_resource = ExtResource( 5 )
+dialogue_start_key = "npc_raka"
+
+[node name="Sprite" parent="YSort/NPC1" index="0"]
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" parent="YSort/NPC1" index="1"]
+scale = Vector2( 3.5, 3.5 )
+shape = SubResource( 7 )
+
+[node name="Label" parent="YSort/NPC1" index="2"]
+margin_top = -210.0
+margin_bottom = -190.0
+
+[node name="NPC2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 592, 80 )
+scale = Vector2( 0.42, 0.42 )
+dialogue_resource = ExtResource( 5 )
+dialogue_start_key = "npc_kaleva"
+
+[node name="Sprite" parent="YSort/NPC2" index="0"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" parent="YSort/NPC2" index="1"]
+scale = Vector2( 3.5, 3.5 )
+shape = SubResource( 7 )
+
+[node name="Label" parent="YSort/NPC2" index="2"]
+margin_top = -210.0
+margin_bottom = -190.0
+
+[node name="NPC3_TieBreaker" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 365, 358 )
+scale = Vector2( 0.42, 0.42 )
+dialogue_resource = ExtResource( 5 )
+dialogue_start_key = "npc_annie"
+
+[node name="Sprite" parent="YSort/NPC3_TieBreaker" index="0"]
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="YSort/NPC3_TieBreaker" index="1"]
+scale = Vector2( 3.5, 3.5 )
+shape = SubResource( 7 )
+
+[node name="Label" parent="YSort/NPC3_TieBreaker" index="2"]
+margin_top = -210.0
+margin_bottom = -190.0
+
+[node name="GatekeeperNPC" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 768, -40 )
+scale = Vector2( 1.8, 1.8 )
+dialogue_resource = ExtResource( 5 )
+dialogue_start_key = "epilogue_village"
+
+[node name="Sprite" parent="YSort/GatekeeperNPC" index="0"]
+position = Vector2( 0.480774, 14.9039 )
+scale = Vector2( 0.218268, 0.217363 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="YSort/GatekeeperNPC" index="1"]
+position = Vector2( -5.28847, 56.25 )
+scale = Vector2( 1, 0.519231 )
+
+[node name="CollisionShape2D" parent="YSort/GatekeeperNPC/SolidBody" index="0"]
+position = Vector2( -4.44446, 30 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[editable path="YSort/NPC1"]
+[editable path="YSort/NPC2"]
+[editable path="YSort/NPC3_TieBreaker"]
+[editable path="YSort/GatekeeperNPC"]
