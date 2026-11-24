@@ -1,0 +1,13 @@
+# Godot 3/4 specific ignores
+.import/
+
+# Imported translations
+*.translation
+
+# Mono-specific ignores
+.mono/
+
+# Binary exports
+build/
+*.exe
+*.pck
