@@ -39,9 +39,9 @@ Setiap keputusan dan pertimbangan yang kamu pilih saat berinteraksi dengan warga
 ## Cara Menjalankan
 
 ### 1. Melalui File Build (Windows)
-1. Unduh file rilis (`.zip`) pada halaman **Releases** di repositori GitHub ini.
-2. Ekstrak file `.zip` tersebut.
-3. Jalankan `WhoAmI.exe`.
+1. Unduh file game: [**Download WhoAmI v1.0.0 (.zip)**](https://github.com/yuyushar/Who-Am-I/releases/download/v1.0.0/WhoAmI.zip) *(atau lihat semua versi di [GitHub Releases](https://github.com/yuyushar/Who-Am-I/releases))*.
+2. Ekstrak file `WhoAmI.zip` di komputer Anda.
+3. Jalankan file `WhoAmI.exe`.
 
 ### 2. Melalui Godot Engine (Source Code)
 1. Pastikan **Godot Engine 3.6.1 (stable)** sudah terpasang.
