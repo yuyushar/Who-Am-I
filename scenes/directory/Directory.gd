@@ -1,10 +1,10 @@
 extends Control
 
 const MBTI_ORDER = [
-	"ISTJ", "ISFJ", "INFJ", "INTJ",
-	"ISTP", "ISFP", "INFP", "INTP",
-	"ESTP", "ESFP", "ENFP", "ENTP",
-	"ESTJ", "ESFJ", "ENFJ", "ENTJ"
+	"ISTJ", "INTJ", "ESTJ", "ENTJ",
+	"ISFJ", "INFJ", "ESFJ", "ENFJ",
+	"ISTP", "INTP", "ESTP", "ENTP",
+	"ISFP", "INFP", "ESFP", "ENFP"
 ]
 
 const ICON_LOCKED_PATH = "res://scenes/directory/icons/icon_locked.png"
